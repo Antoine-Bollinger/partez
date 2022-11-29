@@ -27,7 +27,7 @@
 
 This kit is meant to help developpers to quickly create a basic PHP app with router.
 
-This project is published on Packagist so you can use it via composer.
+This project is published on **[Packagist](https://packagist.org/packages/abollinger/starter-php)** so you can use it via composer.
 
 ## Getting started
 

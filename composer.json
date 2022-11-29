@@ -17,7 +17,8 @@
         }
     },
     "scripts": {
-        "start": "php -S localhost:8000"
+        "start": "php -S localhost:8000",
+        "bricolo": "php config/Bricolo.class.php"
     },
     "authors": [
         {

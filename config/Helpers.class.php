@@ -1,8 +1,17 @@
 <?php
 namespace Abollinger\StarterPhp\Config;
 
+/**
+ * 
+ */
 class Helpers 
 {
+	/**
+	 * Render PHP array into a HTML ul list
+	 * 
+	 * @param array $arr
+	 * @return string
+	 */
     public static function printArray(
 		$arr
 	) : string {
