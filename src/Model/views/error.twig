@@ -1,7 +1,15 @@
 {% extends "layout.twig" %}
 
 {% set content %}
-    <h1>Error</h1>
-    {{ message }}
-    {{ routes|raw }}
+    <main class="container mx-auto flex flex-col justify-center items-center">
+        <div>
+            <h1 class="pb-5">Error {{ _params.code }}: {{ _params.message }}</h1>
+            <p>Availables pages:</p>
+            <ul class="list-inside list-disc">
+            {% for route in _params.routes %}
+                    <li><a href="{{ route.route }}">{{ route.name }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </main>
 {% endset %}

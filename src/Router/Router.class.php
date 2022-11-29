@@ -40,8 +40,13 @@ class Router
             $this->controller = "\\Abollinger\\StarterPhp\\Controller\\" . $this->route["controller"]; 
             new $this->controller(["route" => $this->route, "routes" => $this->routes]);
         } catch (\Exception $e) {
-            $error = new Controller();
-            $error->renderView("error.twig", ["message" => $e->getMessage(), "code" => $e->getCode(), "routes" => Helpers::printArray($this->routes)]);
+            $error = new Controller([
+                "message" => $e->getMessage(), 
+                "code" => $e->getCode(), 
+                "routes" => $this->routes, 
+                "route" => ["name" => "Error " . $e->getCode()]
+            ]);
+            $error->renderView("error.twig");
         }
     }
 }
