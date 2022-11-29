@@ -40,12 +40,12 @@ Then you must install all the dependencies with:
 composer install
 ```
 
-Finally, run the PHP server web with;
+Finally, run the PHP server web with:
 ```
-php -S localhost:8000 -t src/
+php -S localhost:8000
 ``` 
 
-Open your browser at <a href="http://localhost:8000">localhost:8000</a> to see the result.
+and then open your browser at <a href="http://localhost:8000">localhost:8000</a> to see the result.
 
 ## Add pages
 
@@ -59,7 +59,7 @@ You can add pages following this steps:
 - This kit is (of course) mainly build in **[PHP](https://www.php.net/)**, using as much as possible the **MVC pattern**. We use the **[Twig](https://twig.symfony.com/)** template engine to generate the pages. 
 - Style is powered by **[TailwindCSS](https://tailwindcss.com/)**, using the simple CDN link.
 
-The structure is : 
+The structure is: 
 
 ```bash
 .
@@ -70,18 +70,18 @@ The structure is :
 │   ├── css/
 │   ├── images/
 │   └── js/
-└── src/
-    ├── Controller/
-    │   ├── [pages]
-    │   └── Controller.class.php
-    ├── Model/
-    │   ├── views/
-    │   │   └── [views]
-    │   └── layout.twig
-    ├── Controller/
-    │   ├── Router.class.php
-    │   └── routes.yaml
-    └── index.php
+├── src/
+│   ├── Controller/
+│   │   ├── [pages]
+│   │   └── Controller.class.php
+│   ├── Model/
+│   │   ├── views/
+│   │   │   └── [views]
+│   │   └── layout.twig
+│   └── Controller/
+│       ├── Router.class.php
+│       └── routes.yaml
+└── index.php
 ```
 
 <!--CONTRIBUTING -->
