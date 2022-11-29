@@ -13,9 +13,11 @@
   <summary>Table of Contents</summary>
   <ul>
     <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#getting-started">Getting started</a></li>
+    <li><a href="#add-pages">Add pages</a></li>
     <li><a href="#build-with">Build with</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact-">Contact 📧</a></li>
+    <li><a href="#contact">Contact 📧</a></li>
   </ul>
 </details>
 
@@ -25,7 +27,7 @@
 
 This kit is meant to help developpers to quickly create a basic PHP app with router.
 
-## Getting start
+## Getting started
 
 First you need to clone this repo: 
 
@@ -45,7 +47,7 @@ php -S localhost:8000 -t src/
 
 Open your browser at <a href="http://localhost:8000">localhost:8000</a> to see the result.
 
-## Adding pages
+## Add pages
 
 You can add pages following this steps:
 

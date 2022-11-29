@@ -7,15 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+    </style>
 </head>
 {% block body %}
 <body>
     {% block navbar %}
-        <nav class="container mx-auto h-[50px]">
+        <nav class="container mx-auto h-[50px] sticky top-0 w-full">
             <ul class="h-full flex gap-x-10 justify-end items-center">
                 {% for route in _params.routes %}
-                    <li><a href="{{ route.route }}">{{ route.name }}</a></li>
+                    <li class="{{ html_classes({
+                        'underline': route.route == _params.route.route
+                    }) }}"><a href="{{ route.route }}">{{ route.name }}</a></li>
                 {% endfor %}
             </ul>
         </nav>

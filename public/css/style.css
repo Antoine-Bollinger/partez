@@ -1,0 +1,8 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    min-height: calc(100vh - 50px);
+}

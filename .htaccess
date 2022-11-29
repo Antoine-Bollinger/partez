@@ -1,3 +1,3 @@
 RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/v3/public [NC]
+RewriteCond %{REQUEST_URI} !^/public [NC]
 RewriteRule . src/index.php [L,QSA]

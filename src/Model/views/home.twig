@@ -1,5 +1,8 @@
 {% extends "layout.twig" %}
 
-{% set content %}
-    <h1>Home</h1>
-{% endset %}
+{% block main %}
+    <main class="container mx-auto flex flex-col justify-center items-center">
+        <h1 class="text-2xl">Welcome to abollinger's <a class="text-blue-600" href="https://github.com/Antoine-Bollinger/kit_php_twig">PHP Starter</a> !</h1>
+        <p>For a guide check out the <a class="text-blue-600" href="https://github.com/Antoine-Bollinger/kit_php_twig">documentation</a>.</p>
+    </main> 
+{% endblock %}
