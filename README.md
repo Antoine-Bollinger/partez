@@ -81,7 +81,7 @@ The structure is:
 │   │   ├── views/
 │   │   │   └── [views]
 │   │   └── layout.twig
-│   └── Controller/
+│   └── Router/
 │       ├── Router.class.php
 │       └── routes.yaml
 └── index.php
