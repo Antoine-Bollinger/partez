@@ -27,7 +27,10 @@ class Router
 
     ) {
         try {
-            $route = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$request_uri = str_replace(APP_SUBDIR, "", $_SERVER["REQUEST_URI"]);
+			$main_url = explode("?", $request_uri, 2);
+            $route = $main_url[0];
+        
             $key = array_search($route, array_column($this->routes, "route"));
             if ($key === false) {
                 throw new \Exception(sprintf("The page you're trying to get (%s) was not found.", $route), 404);

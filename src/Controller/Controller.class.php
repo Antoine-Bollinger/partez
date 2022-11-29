@@ -31,6 +31,7 @@ class Controller
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addExtension(new IntlExtension());
         $this->twig->addGlobal("app_title", "PHP Starter kit by abollinger");
+        $this->twig->addGlobal("app_subdir", APP_SUBDIR);
         $this->twig->addGlobal("_params", $this->params);
     }
 

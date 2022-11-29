@@ -7,7 +7,7 @@
             <p>Availables pages:</p>
             <ul class="list-inside list-disc">
             {% for route in _params.routes %}
-                    <li><a href="{{ route.route }}">{{ route.name }}</a></li>
+                    <li><a href="{{ app_subdir ~ route.route }}">{{ route.name }}</a></li>
             {% endfor %}
             </ul>
         </div>
