@@ -1,32 +1,10 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h3 align="center">PHP Starter kit</h3>
+# abollinger's PHP starter kit
 
-  <p align="center">
-    A simple PHP starter kit with router & twig
-  </p>
-</p>
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ul>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#getting-started">Getting started</a></li>
-    <li><a href="#add-pages">Add pages</a></li>
-    <li><a href="#build-with">Build with</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact 📧</a></li>
-  </ul>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
+[![Total Downloads](https://img.shields.io/packagist/dt/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
+[![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
+[![License](https://img.shields.io/packagist/l/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
 
 This kit is meant to help developpers to quickly create a basic PHP app with router.
-
 This project is published on **[Packagist](https://packagist.org/packages/abollinger/starter-php)** so you can use it via composer.
 
 ## Getting started
