@@ -1,0 +1,30 @@
+{% set title = _params.route.name is defined ? app_title ~ " | " ~ _params.route.name : app_title %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+{% block body %}
+<body>
+    {% block navbar %}
+        <nav class="container mx-auto h-[50px]">
+            <ul class="h-full flex gap-x-10 justify-end items-center">
+                {% for route in _params.routes %}
+                    <li><a href="{{ route.route }}">{{ route.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endblock %}
+    {% block main %}
+    <main class="container mx-auto">
+        {{ content|raw }}
+    </main>    
+    {% endblock %}
+</body>
+{% endblock %}
+</html>

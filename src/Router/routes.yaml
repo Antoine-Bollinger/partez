@@ -1,0 +1,9 @@
+- route: "/"
+  name: "Home"
+  path: "Home"
+  controller: "HomeController"
+  
+- route: "/about"
+  name: "About"
+  path: "About"
+  controller: "AboutController"
