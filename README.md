@@ -38,7 +38,7 @@ composer create-project abollinger/starter-php .
 ```
 
 Then simply run the PHP server web with:
-```
+```bash
 php -S localhost:8000
 ``` 
 
@@ -50,6 +50,12 @@ You can add pages following this steps:
 
 - First add element in the ```src/Router/routes.yaml```. Use the existing pages as model.
 - Then you will have to create the Controller and the View in their respectives folders. Please use the existing files as model.
+
+You can also use Bricolo to addpage. Running
+```bash
+composer bricolo addpage <pagename>
+```
+will automatically create the Controller and View files, and add the route to the routes.yaml file.
 
 ## Build with
 
