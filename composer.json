@@ -1,6 +1,8 @@
 {
     "name": "abollinger/starter-php",
+    "type": "library",
     "description": "A starting kit for small php app",
+    "license": "MIT",
     "require": {
         "twig/twig": "^3.4",
         "twig/html-extra": "^3.4",
