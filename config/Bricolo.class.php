@@ -31,16 +31,45 @@ class Bricolo
     private function addpage(
         $params = []
     ) {
-        echo "Creating a new page named " . $params[0];
-        $routes = file_get_contents(APP_ROOT . "/src/Router/routes.yaml");
-        file_put_contents(APP_ROOT . "/src/Router/routes.yaml", $routes . "
-- route: \"/".$params[0]."\"
-  name: \"".ucfirst($params[0])."\"
-  path: \"".ucfirst($params[0])."\"
-  controller: \"".ucfirst($params[0])."Controller\"
-        ");
-    }
+        try {
+            if ($params[0] === "") {
+                throw new Exception("Please give a name to your page");
+            }
+            $ucName = ucfirst($params[0]);
+            $name = strtolower($params[0]);
 
+            $controllerPath = APP_ROOT . "/src/Controller/" . $ucName;
+            $modelPath = APP_ROOT . "/src/Model/views/" . $name . ".twig";
+            
+            echo "Creating a new page named " . $ucName;
+            $routes = file_get_contents(APP_ROOT . "/src/Router/routes.yaml");
+            file_put_contents(APP_ROOT . "/src/Router/routes.yaml", $routes . "
+- route: \"/".$name."\"
+  name: \"".$ucName."\"
+  path: \"".$ucName."\"
+  controller: \"".$ucName."Controller\"
+            ");
+            mkdir($controllerPath);
+            copy(APP_ROOT . "/config/templates/Controller.php", $controllerPath . "/Controller.php");
+            copy(APP_ROOT . "/config/templates/new.twig", $modelPath);
+            file_put_contents($controllerPath . "/Controller.php", "<?php 
+namespace Abollinger\StarterPhp\Controller;
+
+class ".$ucName."Controller extends Controller
+{
+    public function __construct(
+        \$params = null
+    ) {
+        parent::__construct(\$params);
+        \$this->renderView(\"".$name.".twig\");
+    }
+}
+            ");
+            echo "Pages created! Please edit " . $controllerPath . "/Controller.php" . " and " . $modelPath . " to configure you're new page.";
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        } 
+    }
 }
 
 new Bricolo($argc, $argv);
