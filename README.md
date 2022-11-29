@@ -27,20 +27,17 @@
 
 This kit is meant to help developpers to quickly create a basic PHP app with router.
 
+This project is published on Packagist so you can use it via composer.
+
 ## Getting started
 
-First you need to clone this repo: 
+Create a new project with: 
 
 ```bash
-git clone https://github.com/Antoine-Bollinger/kit_php_twig.git .
+composer create-project abollinger/starter-php .
 ```
 
-Then you must install all the dependencies with: 
-```bash
-composer install
-```
-
-Finally, run the PHP server web with:
+Then simply run the PHP server web with:
 ```
 php -S localhost:8000
 ``` 
