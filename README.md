@@ -34,7 +34,7 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
 Create a new project with: 
 
 ```bash
-composer create-project abollinger/starter-php .
+composer create-project abollinger/starter-php . "1.0.*"
 ```
 
 Then simply run the PHP server web with:
