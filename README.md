@@ -1,4 +1,4 @@
-# abollinger's PHP starter kit
+# PHP Starter kit
 
 [![Total Downloads](https://img.shields.io/packagist/dt/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
 [![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
