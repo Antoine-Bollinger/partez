@@ -1,5 +1,5 @@
 {
-    "name": "abollinger/starter-php",
+    "name": "abollinger/php-starter",
     "type": "library",
     "description": "A starting kit for small php app",
     "license": "MIT",

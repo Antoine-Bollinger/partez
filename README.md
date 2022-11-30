@@ -1,11 +1,11 @@
 # PHP Starter kit
 
-[![Total Downloads](https://img.shields.io/packagist/dt/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
-[![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
-[![License](https://img.shields.io/packagist/l/abollinger/starter-php)](https://packagist.org/packages/abollinger/starter-php)
+[![Total Downloads](https://img.shields.io/packagist/dt/abollinger/php-starter)](https://packagist.org/packages/abollinger/php-starter)
+[![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/php-starter)](https://packagist.org/packages/abollinger/php-starter)
+[![License](https://img.shields.io/packagist/l/abollinger/php-starter)](https://packagist.org/packages/abollinger/php-starter)
 
 This kit is meant to help developpers to quickly create a basic PHP app with router.
-This project is published on **[Packagist](https://packagist.org/packages/abollinger/starter-php)** so you can use it via composer.
+This project is published on **[Packagist](https://packagist.org/packages/abollinger/php-starter)** so you can use it via composer.
 
 ![Home](public/images/preview.jpg)
 
@@ -14,7 +14,7 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
 Create a new project with: 
 
 ```bash
-composer create-project abollinger/starter-php . "1.0.*"
+composer create-project abollinger/php-starter . "1.0.*"
 ```
 
 Then simply run the PHP server web with:
