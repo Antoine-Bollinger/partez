@@ -3,14 +3,11 @@
 {% block main %}
     <main class="container d-flex flex-column align-items-center justify-content-center">
         <div>
-            <h1 class="pb-5">Error {{ _params.code }}: {{ _params.message }}</h1>
-
-                 {{ dump(_params.routes )}}
-
+            <h1 class="pb-5">Error {{ _params.code }} | <small class="text-muted">{{ _params.message }}</small></h1>
             <p>Availables pages:</p>
             <ul class="list-inside list-disc">
             {% for route in _params.routes %}
-                    <li><a href="{{ app_subdir ~ route.route }}">{{ route.name }}</a></li>
+                    <li><a class="link-secondary" href="{{ app_subdir ~ route.route }}">{{ route.name }}</a></li>
             {% endfor %}
             </ul>
         </div>
