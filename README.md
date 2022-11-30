@@ -22,30 +22,34 @@ php -S localhost:8000
 
 and then open your browser at <a href="http://localhost:8000">localhost:8000</a> to see the result.
 
-## Add pages
+## The router
 
-You can add pages following this steps:
+In "automatic mode", the router scan for all Controller.php files in the Controller directory to set the routes for the app. 
+There is also the options of defining this routes manually through a YAML files.
 
-- First add element in the ```src/Router/routes.yaml```. Use the existing pages as model.
-- Then you will have to create the Controller and the View in their respectives folders. Please use the existing files as model.
+## The pages
 
-You can also use Bricolo to addpage. Running
+Pages are hosted in the Controller path. Each page must contain at least a Controller extending the main FrontendController and render a Twig template.
+
+You can add pages manually or use the Bricolo tool :
 ```bash
 composer bricolo addpage <pagename>
 ```
-will automatically create the Controller and View files, and add the route to the routes.yaml file.
+This will automatically create the Controller file. If the router is still in automatic mode, the page will be automatically accessible.
 
 ## Build with
 
 - This kit is (of course) mainly build in **[PHP](https://www.php.net/)**, using as much as possible the **MVC pattern**. We use the **[Twig](https://twig.symfony.com/)** template engine to generate the pages. 
-- Style is powered by **[TailwindCSS](https://tailwindcss.com/)**, using the simple CDN link.
+- Style is now powered by **[Bootstrap v5.2](https://getbootstrap.com/)**, using the simple CDN link.
+- You can add JS scripts in the public folder or wherever you want.
 
-The structure is: 
+The basic structure is: 
 
 ```bash
 .
 ├── config/
 │   ├── Bootstrap.class.php
+│   ├── Bricolo.class.php
 │   └── Helpers.class.php
 ├── public/
 │   ├── css/
@@ -56,6 +60,8 @@ The structure is:
 │   │   ├── [pages]
 │   │   └── Controller.class.php
 │   ├── Model/
+│   │   ├── includes/
+│   │   ├── templates/
 │   │   ├── views/
 │   │   │   └── [views]
 │   │   └── layout.twig

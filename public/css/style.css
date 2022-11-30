@@ -4,5 +4,6 @@ body, html {
 }
 
 main {
-    min-height: calc(100vh - 50px);
+    min-height: 100vh;
+    padding-top: 100px;
 }

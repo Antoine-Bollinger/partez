@@ -1,9 +1,9 @@
 <?php 
-namespace Abollinger\StarterPhp;
+namespace Abollinger\PHPStarter;
 
-use \Abollinger\StarterPhp\Config\Bootstrap;
-use \Abollinger\StarterPhp\Config\Helpers;
-use \Abollinger\StarterPhp\Router\Router;
+use \Abollinger\PHPStarter\Config\Bootstrap;
+use \Abollinger\PHPStarter\Config\Helpers;
+use \Abollinger\PHPStarter\Router\Router;
 
 require_once __DIR__ . "/vendor/autoload.php";
 require_once __DIR__ . "/config/Bootstrap.class.php";

@@ -1,5 +1,5 @@
 <?php
-namespace Abollinger\StarterPhp\Config;
+namespace Abollinger\PHPStarter\Config;
 
 define("APP_ROOT", dirname(__DIR__));
 
@@ -42,29 +42,8 @@ class Bricolo
             $modelPath = APP_ROOT . "/src/Model/views/" . $name . ".twig";
             
             echo "Creating a new page named " . $ucName;
-            $routes = file_get_contents(APP_ROOT . "/src/Router/routes.yaml");
-            file_put_contents(APP_ROOT . "/src/Router/routes.yaml", $routes . "
-- route: \"/".$name."\"
-  name: \"".$ucName."\"
-  path: \"".$ucName."\"
-  controller: \"".$ucName."Controller\"
-            ");
             mkdir($controllerPath);
             copy(APP_ROOT . "/config/templates/Controller.php", $controllerPath . "/Controller.php");
-            copy(APP_ROOT . "/config/templates/new.twig", $modelPath);
-            file_put_contents($controllerPath . "/Controller.php", "<?php 
-namespace Abollinger\StarterPhp\Controller;
-
-class ".$ucName."Controller extends Controller
-{
-    public function __construct(
-        \$params = null
-    ) {
-        parent::__construct(\$params);
-        \$this->renderView(\"".$name.".twig\");
-    }
-}
-            ");
             echo "Pages created! Please edit " . $controllerPath . "/Controller.php" . " and " . $modelPath . " to configure you're new page.";
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());

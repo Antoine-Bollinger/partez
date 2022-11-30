@@ -1,7 +1,7 @@
 <?php 
-namespace Abollinger\StarterPhp\Controller;
+namespace Abollinger\PHPStarter\Controller;
 
-class HomeController extends Controller
+class Controller extends FrontendController
 {
     public function __construct(
 		$params = null

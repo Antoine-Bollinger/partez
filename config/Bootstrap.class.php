@@ -1,5 +1,5 @@
 <?php
-namespace Abollinger\StarterPhp\Config;
+namespace Abollinger\PHPStarter\Config;
 
 /**
  * Bootstrap for the web app
@@ -17,6 +17,7 @@ abstract class Bootstrap
     static public function setConstants(
         $params = null
     ) {
+        define("APP_TITLE", "PHP Starter");
         define("APP_ROOT", str_replace("\\", "/", dirname(__DIR__)));
         define("APP_SUBDIR", str_replace(str_replace("\\", "/",$_SERVER["DOCUMENT_ROOT"]), "", APP_ROOT));
         define("APP_MODEL_PATH", APP_ROOT . "/src/Model");

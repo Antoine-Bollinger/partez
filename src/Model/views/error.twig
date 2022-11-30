@@ -1,9 +1,12 @@
 {% extends "layout.twig" %}
 
-{% set content %}
-    <main class="container mx-auto flex flex-col justify-center items-center">
+{% block main %}
+    <main class="container d-flex flex-column align-items-center justify-content-center">
         <div>
             <h1 class="pb-5">Error {{ _params.code }}: {{ _params.message }}</h1>
+
+                 {{ dump(_params.routes )}}
+
             <p>Availables pages:</p>
             <ul class="list-inside list-disc">
             {% for route in _params.routes %}
@@ -12,4 +15,4 @@
             </ul>
         </div>
     </main>
-{% endset %}
+{% endblock %}
