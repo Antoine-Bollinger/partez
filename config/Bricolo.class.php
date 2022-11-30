@@ -41,10 +41,10 @@ class Bricolo
             $controllerPath = APP_ROOT . "/src/Controller/" . $ucName;
             $modelPath = APP_ROOT . "/src/Model/views/" . $name . ".twig";
             
-            echo "Creating a new page named " . $ucName;
+            echo "Creating a new page named " . $ucName . "\r\n";
             mkdir($controllerPath);
             copy(APP_ROOT . "/config/templates/Controller.php", $controllerPath . "/Controller.php");
-            echo "Pages created! Please edit " . $controllerPath . "/Controller.php" . " and " . $modelPath . " to configure you're new page.";
+            echo "Page " . $ucName . " created!\r\nPlease edit " . $controllerPath . "/Controller.php" . " to configure this new page.\r\nIf you're using the routes.yaml file for the router, don't forget to add this new page in it.";
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         } 
