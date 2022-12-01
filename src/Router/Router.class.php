@@ -1,41 +1,42 @@
 <?php 
 namespace Abollinger\PHPStarter\Router;
 
-use \Symfony\Component\Yaml\Yaml;
 use \Abollinger\PHPStarter\Config\Helpers;
 use \Abollinger\PHPStarter\Controller\FrontendController;
 
 class Router 
 {
-    public $routes;
-    public $route;
-    public $controller;
+    private $routes;
+    private $routesOnNavbar;
+    private $route;
+    private $controller;
+    private $texts;
 
     public function __construct(
         $params = null
     ) {
-        $this->setRoutes(APP_CONTROLLER_PATH);
+        $this->setRoutes();
+        $this->setTexts();
     }
 
     /**
-     * Set a array of the availables routes edited in the routes.yaml files
+     * Set a array of the availables routes edited in the config/routes.yaml file
      * 
      * @param null
      * @return boolean true
      */
     private function setRoutes(
-        $dir = ""
-    ) {
-        /**
-         * With this option, router looks for all the files included in the Controller directory and containing a controller to set the routes of the app :
-         */
-        // $this->routes = Helpers::scanDirectories(APP_CONTROLLER_PATH);
 
-        /**
-         * If you prefere to add the routes manually, you can easily edit the routes.yaml and use this following line :
-         */
-        $this->routes = Yaml::parseFile(APP_ROOT . "/src/Router/routes.yaml");
+    ) {
+        $this->routes = Helpers::getYaml(APP_ROOT . "/config/routes.yaml");
+        $this->routesOnNavbar = array_filter($this->routes, function($value) {return $value["onNavbar"];});
         return true;
+    }
+
+    private function setTexts(
+    
+    ) {
+        $this->texts = Helpers::getYaml(APP_ROOT . "/config/texts.yaml");
     }
 
     /**
@@ -50,28 +51,32 @@ class Router
         try {
 			$request_uri = str_replace(APP_SUBDIR, "", $_SERVER["REQUEST_URI"]);
 			$main_url = explode("?", $request_uri, 2);
-            $route = $main_url[0] === "/" ? "/home" : $main_url[0];
+            $route = $main_url[0];
         
             $key = array_search($route, array_column($this->routes, "route"));
-            if ($key === false) {
-                throw new \Exception(sprintf("The page you're trying to get (%s) was not found.", $route), 404);
-            }
+            if ($key === false)
+                throw new \Exception("page", 404);
+
             $this->route = $this->routes[$key];
-            if (!file_exists(APP_CONTROLLER_PATH . "/" . $this->route["controller"])) {
-                throw new \Exception("The controller you're trying to use doesn't exist.", 500);
-            }            
+            if (!file_exists(APP_CONTROLLER_PATH . "/" . $this->route["controller"]))
+                throw new \Exception("controller", 500);
+
             require_once APP_CONTROLLER_PATH . "/" . $this->route["controller"]; 
             $this->controller = "\\Abollinger\\PHPStarter\\Controller\\Controller"; 
-            new $this->controller(["route" => $this->route, "routes" => $this->routes]);
+            new $this->controller([
+                "route" => $this->route, 
+                "routes" => $this->routesOnNavbar
+            ]);
             return true;
         } catch (\Exception $e) {
             $error = new FrontendController([
-                "message" => $e->getMessage(), 
+                "message" => $this->texts["error"][$e->getMessage()], 
                 "code" => $e->getCode(), 
-                "routes" => $this->routes, 
-                "route" => ["name" => "Error " . $e->getCode()]
+                "route" => ["name" => "Error " . $e->getCode()],
+                "routes" => $this->routesOnNavbar
             ]);
-            $error->renderView("error.twig");
+            $availableErrors = [404 => "404"];
+            $error->renderView("errors/" . ($availableErrors[$e->getCode()] ?? "error") . ".twig");
             return false;
         }
     }

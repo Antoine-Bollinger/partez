@@ -1,9 +1,18 @@
 - exeFile: "Controller.php"
-  route: "/home"
+  route: "/"
   name: "Home"
   controller: "/Home/Controller.php"
+  onNavbar: true
   
 - exeFile: "Controller.php"
   route: "/about"
   name: "About"
   controller: "/About/Controller.php"
+  onNavbar: true
+
+- exeFile: "Controller.php"
+  route: "/admin"
+  name: "Admin"
+  controller: "/Admin/Controller.php"
+  onNavbar: false
+  

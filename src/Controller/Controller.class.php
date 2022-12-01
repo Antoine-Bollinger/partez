@@ -41,7 +41,7 @@ class FrontendController
     ) {
         try {
             if (!file_exists(APP_MODEL_PATH . "/views/" . $file)) {
-                throw new \Exception("The model you're trying to use doesn't exist.", 403);
+                throw new \Exception("model", 500);
             }
 			echo $this->twig->render("views/" . $file, $params);
         } catch(Exception $e) {

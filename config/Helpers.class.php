@@ -1,6 +1,8 @@
 <?php
 namespace Abollinger\PHPStarter\Config;
 
+use \Symfony\Component\Yaml\Yaml;
+
 /**
  * 
  */
@@ -58,5 +60,15 @@ class Helpers
 			}
 		}
 		return $allData;
+	}
+
+	public static function getYaml(
+		$filePath = ""
+	) {
+		try {
+			return Yaml::parseFile($filePath);
+		} catch (\Exception $e) {
+			return ["code" => $e->getCode(), "message" => $e->getMessage()];
+		}
 	}
 }

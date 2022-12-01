@@ -1,4 +1,4 @@
-# PHP Starter kit
+# <img src="public/favicon.svg" height="40" width="40"/> Starter kit
 
 [![Total Downloads](https://img.shields.io/packagist/dt/abollinger/php-starter)](https://packagist.org/packages/abollinger/php-starter)
 [![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/php-starter)](https://packagist.org/packages/abollinger/php-starter)
@@ -24,12 +24,13 @@ php -S localhost:8000
 
 and then open your browser at <a href="http://localhost:8000">localhost:8000</a> to see the result.
 
-## The router
+## How it works
 
-In "automatic mode", the router scan for all Controller.php files in the Controller directory to set the routes for the app. 
-There is also the options of defining this routes manually through a YAML files.
+### The router
 
-## The pages
+Routes are manually defined in the ```src/config/routes.yaml``` file.
+
+### The pages
 
 Pages are hosted in the Controller path. Each page must contain at least a Controller extending the main FrontendController and render a Twig template.
 
@@ -37,7 +38,7 @@ You can add pages manually or use the Bricolo tool :
 ```bash
 composer bricolo addpage <pagename>
 ```
-This will automatically create the Controller file. If the router is still in automatic mode, the page will be automatically accessible.
+This will automatically create the Controller file in ```src/Controller/<pagename>/Controller.php```.
 
 ## Build with
 
@@ -50,9 +51,12 @@ The basic structure is:
 ```bash
 .
 ├── config/
+│   ├── templates/
 │   ├── Bootstrap.class.php
 │   ├── Bricolo.class.php
-│   └── Helpers.class.php
+│   ├── Helpers.class.php
+│   ├── routes.yaml
+│   └── texts.yaml
 ├── public/
 │   ├── css/
 │   ├── images/
@@ -63,13 +67,11 @@ The basic structure is:
 │   │   └── Controller.class.php
 │   ├── Model/
 │   │   ├── includes/
-│   │   ├── templates/
 │   │   ├── views/
 │   │   │   └── [views]
 │   │   └── layout.twig
 │   └── Router/
-│       ├── Router.class.php
-│       └── routes.yaml
+│       └── Router.class.php
 └── index.php
 ```
 
