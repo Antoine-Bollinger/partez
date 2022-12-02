@@ -43,8 +43,8 @@ class Bricolo
             
             echo "Creating a new page named " . $ucName . "\r\n";
             mkdir($controllerPath);
-            copy(APP_ROOT . "/config/templates/Controller.php", $controllerPath . "/Controller.php");
-            echo "Page " . $ucName . " created!\r\nPlease edit " . $controllerPath . "/Controller.php" . " to configure this new page.\r\nIf you're using the routes.yaml file for the router, don't forget to add this new page in it.";
+            copy(APP_ROOT . "/config/templates/controller.php", $controllerPath . "/controller.php");
+            echo "Page " . $ucName . " created!\r\nPlease edit " . $controllerPath . "/controller.php" . " to configure this new page.\r\nIf you're using the routes.yaml file for the router, don't forget to add this new page in it.";
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         } 
