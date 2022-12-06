@@ -1,0 +1,13 @@
+"/products":
+  "/":
+    controller: "getProduct"
+    verb: "get"
+  "/create":
+    controller: "createProduct"
+    verb: "post"
+  "/update":
+    controller: "updateProduct"
+    verb: "input"
+  "/delete":
+    controller: "deleteProduct"
+    verb: "delete"

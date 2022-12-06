@@ -1,0 +1,13 @@
+"/users":
+  "/":
+    controller: "getUser"
+    verb: "get"
+  "/create":
+    controller: "createUser"
+    verb: "post"
+  "/update":
+    controller: "updateUser"
+    verb: "input"
+  "/delete":
+    controller: "deleteUser"
+    verb: "delete"
