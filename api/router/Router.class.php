@@ -9,27 +9,10 @@ class ApiRouter extends Router
 {
     public function __construct(
         $path = "",
-        $routesPath = "",
-        $textsPath = ""
+        $routes = "",
+        $texts = ""
     ) {
-        parent::__construct($path, $routesPath, $textsPath);
-    }
-
-
-    /**
-     * Set a array of the availables routes edited in the config/routes.yaml file
-     * 
-     * @param null
-     * @return bool true
-     */
-    protected function setRoutes(
-        $params = null
-    ) : bool {
-        $this->routes = array_merge(
-            Helpers::getYaml(__DIR__ . "/users.yaml"),
-            Helpers::getYaml(__DIR__ . "/products.yaml")
-        );
-        return true;
+        parent::__construct($path, $routes, $texts);
     }
 
     public function start(

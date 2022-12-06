@@ -13,5 +13,11 @@ require_once dirname(__DIR__) . "/config/Helpers.class.php";
 require_once API_ROUTER_PATH . "/Router.class.php";
 
 $path = parse_url(str_replace(API_SUBDIR, "", $_SERVER['REQUEST_URI']), PHP_URL_PATH) ?? "";
-$api = new ApiRouter($path);
+$api = new ApiRouter(
+    $path, 
+    [
+        API_ROOT . "/router/products.yaml",
+        API_ROOT . "/router/users.yaml",
+    ]
+);
 $api->start();
