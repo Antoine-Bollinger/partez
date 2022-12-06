@@ -1,33 +1,20 @@
 <?php 
-namespace Abollinger\PHPStarter\Api;
+namespace Abollinger\PHPStarter\Router;
 
 use \Abollinger\PHPStarter\Config\Helpers;
 
-class Router 
+require_once APP_ROOT . "/config/Router.class.php";
+
+class ApiRouter extends Router
 {
-    private $path;
-    private $route;
-    private $routes;
-
     public function __construct(
-        $path = ""
+        $path = "",
+        $routesPath = "",
+        $textsPath = ""
     ) {
-        $this->setPath($path);
-        $this->setRoutes();
+        parent::__construct($path, $routesPath, $textsPath);
     }
 
-    /**
-     * Set the path use to determine with route will be run
-     * 
-     * @param string $path  Path of the requested route
-     * @return bool true
-     */
-    private function setPath(
-        $path = ""
-    ) : bool {
-        $this->path = $path;
-        return true;
-    }
 
     /**
      * Set a array of the availables routes edited in the config/routes.yaml file
@@ -35,7 +22,7 @@ class Router
      * @param null
      * @return bool true
      */
-    private function setRoutes(
+    protected function setRoutes(
         $params = null
     ) : bool {
         $this->routes = array_merge(
