@@ -25,7 +25,7 @@ class ApiRouter extends Router
             if (count($tmp) === 0 || !isset($this->routes["/" . $tmp[0]]))
                 throw new \Exception("Cannot GET " . API_SUBDIR . $this->path, 404);
             $this->route = $this->routes["/" . $tmp[0]];
-            if (!isset($this->route["/" . $tmp[1]]))
+            if (count($tmp) === 1 || !isset($this->route["/" . $tmp[1]]))
                 throw new \Exception("Cannot GET " . API_SUBDIR . $this->path, 403);
             echo json_encode([
                 "path" => $this->path,

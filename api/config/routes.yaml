@@ -1,4 +1,0 @@
-- path: "/"
-  controller: "getUser"
-- path: "/users"
-  controller: "get"
