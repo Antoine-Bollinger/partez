@@ -1,5 +1,5 @@
 <?php 
-namespace Abollinger\PHPStarter\Api;
+namespace Abollinger\Partez\Api;
 
 class Database 
 {

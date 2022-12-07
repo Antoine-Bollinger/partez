@@ -1,9 +1,7 @@
 <?php 
-namespace Abollinger\PHPStarter\Router;
+namespace Abollinger\Partez\Router;
 
-use \Abollinger\PHPStarter\Config\Helpers;
-
-require_once APP_ROOT . "/config/Router.class.php";
+use \Abollinger\Partez\Config\Helpers;
 
 class ApiRouter extends Router
 {
