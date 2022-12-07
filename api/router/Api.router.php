@@ -36,6 +36,7 @@ class ApiRouter extends Router
             http_response_code($e->getCode());
             $title = "Error " . $e->getCode();
             $content = $e->getMessage();
+            $app_subdir = APP_SUBDIR;
             require_once API_ROOT . "/config/error.php";
             return false;
         }
