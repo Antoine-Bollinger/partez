@@ -34,7 +34,7 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
         <li><a href="#the-router">The router</a></li>
         <li><a href="#the-pages">The pages</a></li>
         <li><a href="#the-public-folder">The public folder</a></li>
-        <li><a href="#the-API">The API</a></li>
+        <!-- <li><a href="#the-API">The API</a></li> -->
       </ul>
     <li><a href="#bricolo">Bricolo</a></li>
     <li><a href="#build-with">Build with</a></li>
@@ -104,9 +104,9 @@ The twig templates are localized in the ```templates/``` at the root of the proj
 
 The ```public/``` directory contains basics js, css and images folder. Please feel free to customized this part.
 
-### The API
+<!-- ### The API
 
-A ```api/``` directory has been created at the root, with for the moment a single ```api/index.php``` returning a JSON object. Of course, this is meant to become a real API with connection to database.
+A ```api/``` directory has been created at the root, with for the moment a single ```api/index.php``` returning a JSON object. Of course, this is meant to become a real API with connection to database. -->
 
 ## Bricolo
 
