@@ -1,5 +1,5 @@
 <p align="center">
-    <p align="center"><img src="./partez.png" height="40"/></p>
+    <p align="center"><img src="public/partez.png" height="40"/></p>
     <br/>
     <p align="center">A simple & fast PHP starter kit for web app.</p>
     <p align="center">
@@ -15,7 +15,7 @@ This kit is intended to help developpers to quickly create a simple PHP app.
 
 This project is published on **[Packagist](https://packagist.org/packages/abollinger/partez)** so you can create a new project based on it.
 
-![Home](./images/preview.jpg)
+![Home](public/images/preview.jpg)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
