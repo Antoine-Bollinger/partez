@@ -36,7 +36,7 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
         <li><a href="#the-public-folder">The public folder</a></li>
         <!-- <li><a href="#the-API">The API</a></li> -->
       </ul>
-    <li><a href="#bricolo">Bricolo</a></li>
+    <!-- <li><a href="#bricolo">Bricolo</a></li> -->
     <li><a href="#build-with">Build with</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -108,7 +108,7 @@ The ```public/``` directory contains basics js, css and images folder. Please fe
 
 A ```api/``` directory has been created at the root, with for the moment a single ```api/index.php``` returning a JSON object. Of course, this is meant to become a real API with connection to database. -->
 
-## Bricolo
+<!-- ## Bricolo
 
 We've create a basic tool named Bricolo, localized in ```bricolo/bricolo.php```. For the moment, the only feature is to create a new page using:
 ```bash
@@ -118,7 +118,7 @@ This will automatically create the Controller file in ```src/controllers/<Pagena
 
 🚩 Don't forget to rename this new controller (default is NewController) and to declare the route in the config/routes.yaml following the example above, and change the twig template used (default is ```templates/views/template.html.twig```).
 
-⛔ Do not delete the ```templates/views/template.html.twig``` as it is the default template used by each new page you create via Bricolo!
+⛔ Do not delete the ```templates/views/template.html.twig``` as it is the default template used by each new page you create via Bricolo! -->
 
 ## Build with
 
