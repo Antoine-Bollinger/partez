@@ -1,3 +1,16 @@
-/.env
-/composer.lock
-/vendor
+# local env files
+.env
+.env.local
+.env.*.local
+.env.php
+
+# vendors & node_modules
+/node_modules/
+/vendor/
+
+# deploy
+deploy*.php
+redirect.php
+
+# VSCode 
+.vscode
