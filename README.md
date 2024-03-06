@@ -34,9 +34,7 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
         <li><a href="#the-router">The router</a></li>
         <li><a href="#the-pages">The pages</a></li>
         <li><a href="#the-public-folder">The public folder</a></li>
-        <!-- <li><a href="#the-API">The API</a></li> -->
       </ul>
-    <!-- <li><a href="#bricolo">Bricolo</a></li> -->
     <li><a href="#build-with">Build with</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -52,73 +50,52 @@ All you need is [Composer](https://getcomposer.org/) to create the project run t
 ### Steps
 
 1. First create a new folder for your project and open a terminal in it
+
 2. Run the following command. This will create all the necessaries files and install the dependencies of the project:
 
 ```bash
 composer create-project abollinger/partez .
 ```
-3. Finally run this simple command:
+
+3. Then you will have to create a .env file at the root of your project. You can use the .env-example to see what the .env can contain at this moment.
+
+4. Finally run this simple command:
 
 ```bash
 composer serve
 ``` 
 
-and then open your browser at <a href="http://localhost:4321">localhost:1234</a> to see the result.
-
-💡 You can customize the ```composer serve``` script in the composer.json file.
+and then open your browser at <a href="http://localhost:1234">localhost:1234</a> to see the result.
 
 ## How it works
 
 ### Configuration
 
-1. You may want to customize the title of your app. For this, just create a ```.env``` file a the root of your project and add a variable ```APP_TITLE=your_title```. You can also define the title directly in the ```config/bootstrap.php``` file, line 21.
+1. You may want to customized the HTML head of you app. Please go the ```src/view/layout.html.twig``` file and make the change you need.
 
-2. You also want to customized the HTML head of you app. Please go the ```tempates/layout.html.twig``` file and make the change you need.
-
-3. Regarding the router configuration, it is described below.
+2. Regarding the router configuration, it is described below.
 
 ### The router
 
-Pages' routes are manually defined in the ```src/config/yaml/routes.yaml``` file. To see what a route must contain, let see the ```/about``` route:
-```yaml
-- route: /about
-  name: About
-  controller: Abollinger\Partez\Controller\AboutController
-```
-This means: 
-- The page can be accessed at the route ```<serverName>/about```
-- The name that will appear in the page's title is ```About```. Also note that you can define a title here (```title: Titre```) if you prefere.
-- The name define the controller file called: ```src/controllers/About.controller.php```
-- The controller called will be ```Abollinger\Partez\Controller\AboutController``` 
+Routes are automatically derived from Controller files contained in the ```src/Controller``` folder.
+For this to work, each Controller must be block-commented in the following way:
 
-As you can see, you are free to customized all this parameters, but it is important to respect this format. The controller will render the page as explained below.
+```php
+/**
+ * @Route("/", name="Home")
+ */
+```
 
 ### The pages
 
-Pages are rendered by the controller in the ```src/controllers``` path. This controller must be an extension of the main controller define in ```config/controller.php```.
+Pages are rendered by the controller in the ```src/Controller``` path. This controller must be an extension of the main controller define in ```Abstract/Controller.php```.
 In the page's controller you must define the ```init()``` method that will call the ```renderView("page.html.twig")``` method which render the twig template.
 
-The twig templates are localized in the ```templates/``` at the root of the project. Basic twig layout is defined as ```templates/layout.html.twig``` and each page's twig template extends this layout.
+The twig templates are localized in the ```src/view``` at the root of the project. Basic twig layout is defined as ```src/view/layout.html.twig``` and each page's twig template extends this layout.
 
 ### The public folder
 
-The ```public/``` directory contains basics js, css and images folder. Please feel free to customized this part.
-
-<!-- ### The API
-
-A ```api/``` directory has been created at the root, with for the moment a single ```api/index.php``` returning a JSON object. Of course, this is meant to become a real API with connection to database. -->
-
-<!-- ## Bricolo
-
-We've create a basic tool named Bricolo, localized in ```bricolo/bricolo.php```. For the moment, the only feature is to create a new page using:
-```bash
-composer bricolo addpage <pagename>
-```
-This will automatically create the Controller file in ```src/controllers/<Pagename>.controller.php``` ( copy of the template at ```bricolo/templates/controller.php```).
-
-🚩 Don't forget to rename this new controller (default is NewController) and to declare the route in the config/routes.yaml following the example above, and change the twig template used (default is ```templates/views/template.html.twig```).
-
-⛔ Do not delete the ```templates/views/template.html.twig``` as it is the default template used by each new page you create via Bricolo! -->
+The ```public/``` directory contains the index.php entry point, basics js, css and images folder. Please feel free to customized this part.
 
 ## Build with
 
@@ -130,35 +107,20 @@ The basic structure is:
 
 ```bash
 .
-├── api/
-│   └── index.php
-├── bricolo/
-│   ├── templates/
-│   └── bricolo.php
-├── config/
-│   ├── yaml
-│   │   │── constants.yaml
-│   │   │── routes.yaml
-│   │   └── texts.yaml
-│   ├── boostrap.php
-│   ├── controller.php
-│   ├── helpers.php
-│   └── router.php
 ├── public/
 │   ├── css/
 │   ├── images/
-│   └── js/
+│   ├── js/
+│   └── index.php
 ├── src/
-│   ├── controller/
-│   │   └── [Controllers, typo is <Name>.controller.php]
-│   └── router/
-│       └── App.router.php
-│── templates/
-│   ├── includes/
-│   ├── views/
-│   │   └── [views, typo <name>.html.twig]
-│   └── layout.twig
-└── index.php
+│   ├── Abstract/ (Basic logic of the app)
+│   ├── App/ (Starter of the app)
+│   ├── Config/ (Some configuration file like Bootstrap or Session)
+│   ├── Controller/
+│   │   └── [Controllers, typo is <Name>Controller.php]
+│   ├── Router/ (Contains main Router logic)
+│   └── view/ (Contain Twig templates for your app)
+└── .env
 ```
 
 <!--CONTRIBUTING -->
