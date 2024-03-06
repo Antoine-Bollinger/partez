@@ -57,7 +57,7 @@ All you need is [Composer](https://getcomposer.org/) to create the project run t
 composer create-project abollinger/partez .
 ```
 
-3. Then you will have to create a .env file at the root of your project. You can use the .env-example to see what the .env can contain at this moment.
+3. Then you will have to create a ```.env``` file at the root of your project. You can use the ```.env-example``` to see what the .env can contain at this moment.
 
 4. Finally run this simple command:
 
