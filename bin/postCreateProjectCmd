@@ -1,3 +1,5 @@
 #!/usr/bin/env php
 <?php 
-echo "\r✅ \e[32mPort Congrats! You've just create a new Partez project!.\n\e[39m";
+echo "\n✅ \e[32mPort Congrats! You've just create a new Partez project!.\n\e[39m";
+echo "\n💡 \e[39mDon't forget to create a .env file at the root of your project. Please check the .env-example to see what it can contains.\n\e[39m";
+echo "\n\e[32mNow just run `composer partez` and see the magic happens! 🚀.\n\n\e[39m";

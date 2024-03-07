@@ -25,7 +25,7 @@
         ],
         "partez": "php vendor/bin/pret partez directory=public",
         "post-create-project-cmd": [
-            "php bin/postCreateProjectCmd"
+            "@php bin/postCreateProjectCmd"
         ]
     },
     "authors": [
