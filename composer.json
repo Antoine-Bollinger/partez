@@ -16,7 +16,7 @@
     "autoload": {
         "psr-4": {
             "Abollinger\\Partez\\": "src/",
-            "Abollinger\\Bin": "bin/"
+            "Abollinger\\Bin\\": "bin/"
         }
     },
     "scripts": {
