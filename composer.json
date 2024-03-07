@@ -25,10 +25,9 @@
         ],
         "partez": "php vendor/bin/pret partez directory=public",
         "post-create-project-cmd": [
-            "php vendor/bin/postCreateProjectCmd"
+            "php bin/postCreateProjectCmd"
         ]
     },
-    "bin": "bin/postCreateProjectCmd",
     "authors": [
         {
             "name": "Antoine Bollinger",

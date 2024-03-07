@@ -1,3 +1,3 @@
 #!/usr/bin/env php
 <?php 
-echo "✅ \e[32mPort Congrats! You've just create a new Partez project!.\n\e[39m";
+echo "\r✅ \e[32mPort Congrats! You've just create a new Partez project!.\n\e[39m";
