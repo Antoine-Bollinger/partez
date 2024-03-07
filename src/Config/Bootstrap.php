@@ -25,8 +25,13 @@ final class Bootstrap
             "APP_ROOT" => str_replace("\\", "/", dirname(dirname(__DIR__)))
         ]);
 
-        $dotenv = \Dotenv\Dotenv::createImmutable(APP_ROOT);
-        $dotenv->load();
+        try {
+            $dotenv = \Dotenv\Dotenv::createImmutable(APP_ROOT);
+            $dotenv->load();
+        } catch(\Exception $e) {
+            error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the project. See .env-example.\e[39m");
+        }
+
 
         Helpers::defineConstants([
             "APP_SUBDIR" => str_replace(str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]), "", APP_ROOT),
