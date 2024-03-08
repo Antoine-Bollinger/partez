@@ -62,7 +62,7 @@ composer create-project abollinger/partez .
 4. Finally run this simple command:
 
 ```bash
-composer partez
+composer serve
 ``` 
 
 and then open your browser at <a href="http://localhost:1234">localhost:1234</a> to see the result (the port may change according to the other ports already in use on your machine. Please check the log in the console).

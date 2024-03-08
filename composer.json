@@ -9,9 +9,6 @@
         "vlucas/phpdotenv": "^5.6",
         "abollinger/helpers": "^1.2"
     },
-    "require-dev": {
-        "abollinger/pret": "^1.6"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -23,12 +20,6 @@
         "serve": [
             "Composer\\Config::disableProcessTimeout",
             "php -S localhost:1234 -t public/"
-        ],
-        "partez": [
-            "php vendor/bin/pret partez directory=public"
-        ],
-        "post-create-project-cmd": [
-            "Abollinger\\Bin\\Logs::InstallationComplete"
         ]
     },
     "authors": [
