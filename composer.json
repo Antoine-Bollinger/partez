@@ -13,8 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Abollinger\\Partez\\": "src/",
-            "Abollinger\\Bin\\": "bin/"
+            "Abollinger\\Partez\\": "src/"
         }
     },
     "scripts": {
