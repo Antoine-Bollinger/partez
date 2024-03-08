@@ -17,8 +17,8 @@
         }
     },
     "scripts": {
-        "serve": "php vendor/bin/bricolo serve d=public",
-        "post-create-project-cmd": "php vendor/bin/bricolo log m=afterinstall"
+        "serve": "php bricolo serve d=public",
+        "post-create-project-cmd": "php bricolo log m=afterinstall"
     },
     "authors": [
         {
