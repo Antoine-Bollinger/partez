@@ -7,7 +7,8 @@
         "twig/html-extra": "^3.8",
         "twig/intl-extra": "^3.8",
         "vlucas/phpdotenv": "^5.6",
-        "abollinger/helpers": "^1.2"
+        "abollinger/helpers": "^1.2",
+        "abollinger/bricolo": "^1.0"
     },
     "license": "MIT",
     "autoload": {
@@ -17,10 +18,7 @@
         }
     },
     "scripts": {
-        "serve": [
-            "Composer\\Config::disableProcessTimeout",
-            "php -S localhost:1234 -t public/"
-        ]
+        "serve": "php vendor/bin/bricolo serve d=public"
     },
     "authors": [
         {
