@@ -32,9 +32,11 @@ final class Bootstrap
             error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the project. See .env-example.\e[39m");
         }
 
+        $document_root = str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]);
+        $app_subdir = (strlen(APP_ROOT) > strlen($document_root)) ? str_replace($document_root, "", APP_ROOT) : "";
 
         Helpers::defineConstants([
-            "APP_SUBDIR" => str_replace(str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]), "", APP_ROOT),
+            "APP_SUBDIR" => $app_subdir,
             "APP_CONFIG" => APP_ROOT . "/src/Config",
             "APP_CONTROLLER" => APP_ROOT . "/src/Controller",
             "APP_VIEW" => APP_ROOT . "/src/view"
