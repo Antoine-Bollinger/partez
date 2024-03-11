@@ -18,7 +18,7 @@ final class Bootstrap
      *
      * @return void
      */
-    static public function setEnv(
+    static public function setEnvironment(
 
     ) :void {
         Helpers::defineConstants([
@@ -32,11 +32,11 @@ final class Bootstrap
             error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the project. See .env-example.\e[39m");
         }
 
-        $document_root = str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]);
-        $app_subdir = (strlen(APP_ROOT) > strlen($document_root)) ? str_replace($document_root, "", APP_ROOT) : "";
+        $documentRoot = str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]);
+        $appSubdir = (strlen(APP_ROOT) > strlen($documentRoot)) ? str_replace($documentRoot, "", APP_ROOT) : "";
 
         Helpers::defineConstants([
-            "APP_SUBDIR" => $app_subdir,
+            "APP_SUBDIR" => $appSubdir,
             "APP_CONFIG" => APP_ROOT . "/src/Config",
             "APP_CONTROLLER" => APP_ROOT . "/src/Controller",
             "APP_VIEW" => APP_ROOT . "/src/view"

@@ -19,14 +19,14 @@ final class Starter
      * Initializes necessary components to start the application.
      *
      * - Starts the session using Session::start().
-     * - Sets the environment configuration using Bootstrap::setEnv().
+     * - Sets the environment configuration using Bootstrap::setEnvironment().
      * - Initializes and triggers the application router (Router).
      */
     public function __construct(
 
     ) {
         Session::start();
-        Bootstrap::setEnv();
+        Bootstrap::setEnvironment();
         new Router();
     }
 }
