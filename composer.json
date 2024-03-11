@@ -20,10 +20,15 @@
         "serve": "php bricolo serve d=public",
         "post-create-project-cmd": "php bricolo log m=afterinstall"
     },
+    "config": {
+        "process-timeout": 0
+    },
     "authors": [
         {
             "name": "Antoine Bollinger",
-            "email": "antoine.bollinger@gmail.com"
+            "email": "antoine.bollinger@gmail.com",
+            "homepage": "https://antoinebollinger.fr",
+            "role": "Developer"
         }
     ]
 }

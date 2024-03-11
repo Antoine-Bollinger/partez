@@ -36,7 +36,7 @@ final class Router extends Abstract\Router
         $this->params = Helpers::defaultParams([
             "url" => parse_url($_SERVER["REQUEST_URI"])["path"]
         ], $params);
-        $this->session = new Session(); 
+        $this->session = new Session();
         $this->init();
         $this->render();
     }
@@ -51,7 +51,7 @@ final class Router extends Abstract\Router
     ) :void {
         $this->requestedRoute = $this->getRequestedRoute($this->params["url"]);
         $reader = new RouteReader();
-        $this->routes = $reader->getRoutesFromDirectory(APP_CONTROLLER, "Abollinger\\Partez");       
+        $this->routes = $reader->getRoutesFromDirectory(APP_CONTROLLER, "Abollinger\\Partez");
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
     }
 

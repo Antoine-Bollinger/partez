@@ -59,6 +59,7 @@ abstract class Controller implements Initializer\Controller
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addExtension(new IntlExtension());
         $this->twig->addGlobal("app_title", APP_TITLE);
+        $this->twig->addGlobal("app_subdir", APP_SUBDIR);
         $this->twig->addGlobal("_params", $this->params);
         $this->twig->addGlobal("_session", $_SESSION);
         return true;
@@ -101,7 +102,7 @@ abstract class Controller implements Initializer\Controller
                 throw new \Exception("file", 500);
             }
             $text = file_get_contents($file);
-            $text = str_replace("public/", "./", $text);
+            $text = str_replace("public/", "", $text);
             $Parsedown = new Parsedown();
             return $Parsedown->text($text);
         } catch(Exception $e) {

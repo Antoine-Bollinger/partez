@@ -12,7 +12,7 @@
                 <p>Relax, have a 🍻 and look through this available pages:</p>
                 <ul class="list-inside list-disc">
                     {% for route in _params.routes %}
-                        <li><a class="link-secondary" href=".{{ route.path }}">{{ route.name }}</a></li>
+                        <li><a class="link-secondary" href="{{ route.path|trim('/', 'left') }}">{{ route.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
