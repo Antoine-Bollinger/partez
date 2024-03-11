@@ -1,5 +1,5 @@
 <?php 
-namespace Abollinger\Partez\Abstract\Initializer;
+namespace Partez\Abstract\Initializer;
 
 interface Controller 
 {

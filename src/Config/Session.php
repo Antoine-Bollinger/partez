@@ -1,5 +1,5 @@
 <?php
-namespace Abollinger\Partez\Config;
+namespace Partez\Config;
 
 /**
  * Class session

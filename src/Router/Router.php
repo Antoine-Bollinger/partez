@@ -1,9 +1,9 @@
 <?php 
-namespace Abollinger\Partez\Router;
+namespace Partez\Router;
 
-use \Abollinger\Partez\Abstract;
-use \Abollinger\Partez\Config\Session;
-use \Abollinger\Partez\Controller\ErrorController;
+use \Partez\Abstract;
+use \Partez\Config\Session;
+use \Partez\Controller\ErrorController;
 
 use \Abollinger\Helpers;
 use \Abollinger\RouteReader;
@@ -51,7 +51,7 @@ final class Router extends Abstract\Router
     ) :void {
         $this->requestedRoute = $this->getRequestedRoute($this->params["url"]);
         $reader = new RouteReader();
-        $this->routes = $reader->getRoutesFromDirectory(APP_CONTROLLER, "Abollinger\\Partez");
+        $this->routes = $reader->getRoutesFromDirectory(APP_CONTROLLER, "\Partez");
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
     }
 

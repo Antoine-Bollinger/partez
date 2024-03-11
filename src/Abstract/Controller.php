@@ -1,5 +1,5 @@
 <?php 
-namespace Abollinger\Partez\Abstract;
+namespace Partez\Abstract;
 
 use \Abollinger\Helpers;
 use \Abollinger\Parsedown;

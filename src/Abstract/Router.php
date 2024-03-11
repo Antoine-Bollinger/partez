@@ -1,5 +1,5 @@
 <?php 
-namespace Abollinger\Partez\Abstract;
+namespace Partez\Abstract;
 
 /**
  * Abstract class Router

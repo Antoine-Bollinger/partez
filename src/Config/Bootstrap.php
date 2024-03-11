@@ -1,5 +1,5 @@
 <?php 
-namespace Abollinger\Partez\Config;
+namespace Partez\Config;
 
 use \Abollinger\Helpers;
 
@@ -32,11 +32,8 @@ final class Bootstrap
             error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the project. See .env-example.\e[39m");
         }
 
-        $documentRoot = str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]);
-        $appSubdir = (strlen(APP_ROOT) > strlen($documentRoot)) ? str_replace($documentRoot, "", APP_ROOT) : "";
-
         Helpers::defineConstants([
-            "APP_SUBDIR" => $appSubdir,
+            "APP_SUBDIR" => Helpers::getAppSubdirectory(APP_ROOT, $_SERVER["DOCUMENT_ROOT"]),
             "APP_CONFIG" => APP_ROOT . "/src/Config",
             "APP_CONTROLLER" => APP_ROOT . "/src/Controller",
             "APP_VIEW" => APP_ROOT . "/src/view"

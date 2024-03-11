@@ -1,9 +1,9 @@
 <?php 
-namespace Abollinger\Partez\App;
+namespace Partez\App;
 
-use \Abollinger\Partez\Config\Session;
-use \Abollinger\Partez\Config\Bootstrap;
-use \Abollinger\Partez\Router\Router;
+use \Partez\Config\Session;
+use \Partez\Config\Bootstrap;
+use \Partez\Router\Router;
 
 /**
  * Class Starter

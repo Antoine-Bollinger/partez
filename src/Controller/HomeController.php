@@ -1,7 +1,7 @@
 <?php 
-namespace Abollinger\Partez\Controller;
+namespace Partez\Controller;
 
-use \Abollinger\Partez\Abstract;
+use \Partez\Abstract;
 
 final class HomeController extends Abstract\Controller 
 {
