@@ -5,9 +5,9 @@
 .env.php
 
 # vendors & node_modules
-/node_modules/
-/vendor/
-/composer.lock
+node_modules
+vendor
+composer.lock
 
 # deploy
 deploy*.php
