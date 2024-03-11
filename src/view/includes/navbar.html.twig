@@ -15,14 +15,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="{{ html_classes('nav-link', { 
-                        'active': _params.path == "/about"
+                        'active': _params.path starts with "/about"
                     }) }}" href="about">About</a>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="{{ html_classes('nav-link', { 
-                        'active': _params.path == "/login"
+                        'active': _params.path starts with "/login"
                     }) }}" href="login">👽️</a>
                 </li>
             </ul>
