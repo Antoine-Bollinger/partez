@@ -41,7 +41,7 @@ final class Database {
 
     ) :void {
         try {
-            $this->connection = new \PDO("mysql:host=".$_ENV["DB_HOST"].";dbname=".$_ENV["DB_NAME"].";charset=utf8mb4",$_ENV["DB_USER"],$_ENV["DB_PWD"]);
+            $this->connection = new \PDO("mysql:host=".$_ENV["D_HOST"].";dbname=".$_ENV["D_NAME"].";charset=utf8mb4",$_ENV["D_USER"],$_ENV["D_PWD"]);
         } catch(\PDOException $e) {
             throw $e;
         }
