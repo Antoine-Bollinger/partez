@@ -1,0 +1,8 @@
+- path: /api/login
+  verb: post
+  auth: false
+  controller: 'ABollinger\Partez\Api\Controller\AuthController::login'
+- path: /api/logout
+  verb: post
+  auth: true
+  controller: 'ABollinger\Partez\Api\Controller\AuthController::logout'
