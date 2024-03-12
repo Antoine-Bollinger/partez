@@ -1,7 +1,6 @@
 <?php
 namespace Partez\Api\Config;
 
-use \Dotenv\Dotenv;
 use \Abollinger\Helpers;
 
 /**
@@ -27,10 +26,10 @@ final class Bootstrap
         ]);
 
         try {
-            $dotenv = \Dotenv\Dotenv::createImmutable(API_ROOT);
+            $dotenv = \Dotenv\Dotenv::createImmutable(dirname(API_ROOT));
             $dotenv->load();
         } catch(\Exception $e) {
-            error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the api folder. See api/.env-example.\e[39m");
+            error_log("🚨 \e[33m" . $e->getMessage() . " Please create a .env at the root of the project. See .env-example.\e[39m");
         }
         
         Helpers::defineConstants([
