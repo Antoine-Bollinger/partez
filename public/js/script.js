@@ -1,33 +1,36 @@
+import Login from "./login.js"
+
 class App {
-    #preContainers = document.querySelectorAll("pre");
+    #preContainers = document.querySelectorAll("pre")
     constructor() {
-        console.log("🔥 Welcome to partez! 🔥\r\nPlease feel free to edit js in public/js directory.");
-        this._setCodeCopyLink();
+        console.log("🔥 Welcome to partez! 🔥\r\nPlease feel free to edit js in public/js directory.")
+        this._setCodeCopyLink()
+        new Login()
     }
 
     _setCodeCopyLink() {
         this.#preContainers.forEach(pre => {
-            const copyLink = document.createElement("a");
-            copyLink.innerHTML = "📋";
-            copyLink.href = "#";
-            copyLink.title = "Copy";
+            const copyLink = document.createElement("a")
+            copyLink.innerHTML = "📋"
+            copyLink.href = "#"
+            copyLink.title = "Copy"
             const initialize = () => {
-                copyLink.innerHTML = "📋";
-                pre.classList.remove("snapshot");
+                copyLink.innerHTML = "📋"
+                pre.classList.remove("snapshot")
             }
             copyLink.addEventListener("click", (e) => {
-                e.preventDefault();
-                initialize();
-                navigator.clipboard.writeText(pre.querySelector("code").innerText);
-                pre.classList.add("snapshot");
-                copyLink.innerHTML = "✅";
+                e.preventDefault()
+                initialize()
+                navigator.clipboard.writeText(pre.querySelector("code").innerText)
+                pre.classList.add("snapshot")
+                copyLink.innerHTML = "✅"
                 setTimeout(() => {
-                    initialize();
-                }, 400);
+                    initialize()
+                }, 400)
             });
-            pre.append(copyLink);
+            pre.append(copyLink)
         });
     }
 }
 
-new App();
+new App()

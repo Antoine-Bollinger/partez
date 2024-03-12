@@ -56,3 +56,7 @@ pre:hover > a {
 pre:hover > a:hover {
     opacity: 1!important;
 }
+
+.grayscale {
+    filter: grayscale(1);
+}
