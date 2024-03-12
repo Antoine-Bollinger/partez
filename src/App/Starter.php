@@ -1,8 +1,8 @@
 <?php 
 namespace Partez\App;
 
-use \Partez\Config\Session;
 use \Partez\Config\Bootstrap;
+use \Abollinger\Session;
 use \Partez\Router\Router;
 
 /**
@@ -25,8 +25,8 @@ final class Starter
     public function __construct(
 
     ) {
-        Session::start();
         Bootstrap::setEnvironment();
+        new Session();
         new Router();
     }
 }

@@ -2,10 +2,10 @@
 namespace Partez\Router;
 
 use \Partez\Abstract;
-use \Partez\Config\Session;
 use \Partez\Controller\ErrorController;
 
 use \Abollinger\Helpers;
+use \Abollinger\Session;
 use \Abollinger\RouteReader;
 
 /**
