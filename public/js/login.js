@@ -17,7 +17,6 @@ export default class Login {
             })
             const data = await login.json()
             localStorage.setItem("token", data.message)
-            console.log(data)
             location.reload()
         })
     }
@@ -25,14 +24,13 @@ export default class Login {
     logoutHandler() {
         this.#logout?.addEventListener("submit", async e => {
             e.preventDefault()
-            const logout = await fetch(e.target.action, {
+            await fetch(e.target.action, {
                 headers: {
                     "Authorization": localStorage.getItem("token")
                 },
                 method: "POST",
             })
             localStorage.removeItem("token")
-            console.log(logout)
             location.reload()
         })
     }
