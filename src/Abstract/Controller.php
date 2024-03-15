@@ -82,7 +82,7 @@ abstract class Controller implements Initializer\Controller
             }
             echo str_replace(
                 "href=\"#", 
-                "href=\"" . ltrim($_SERVER["REQUEST_URI"], "/") . "#",
+                "href=\"" . ltrim(str_replace(APP_SUBDIR, "", $_SERVER["REQUEST_URI"]), "/") . "#",
                 $this->twig->render("pages/" . $file, $params)
             );
             return true;
