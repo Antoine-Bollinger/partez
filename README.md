@@ -30,10 +30,11 @@ This project is published on **[Packagist](https://packagist.org/packages/abolli
     </li>
     <li><a href="#how-it-works">How it works</a></li>
       <ul>
-        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="/#configuration">Configuration</a></li>
         <li><a href="#the-router">The router</a></li>
         <li><a href="#the-pages">The pages</a></li>
         <li><a href="#the-public-folder">The public folder</a></li>
+        <li><a href="#the-api">The API</a></li>
       </ul>
     <li><a href="#build-with">Build with</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -97,6 +98,10 @@ The twig templates are localized in the ```src/view``` at the root of the projec
 
 The ```public``` directory contains the index.php entry point, basics js, css and images folder. Please feel free to customized this part.
 
+### The API
+
+A basic API is available in the ```api/``` folder. This API is powered by a database running on MySQL.
+
 ## Build with
 
 - This kit is build in **[PHP](https://www.php.net/)**, using as much as possible the **MVC pattern**. We use the **[Twig](https://twig.symfony.com/)** template engine to generate the pages. 
@@ -107,6 +112,15 @@ The basic structure is:
 
 ```bash
 .
+├── api/
+│   ├── Abstract/
+│   ├── Config/
+│   ├── Controller/
+│   ├── Database/
+│   ├── Model/
+│   ├── Router/
+│   ├── View/
+│   └── Starter.php
 ├── public/
 │   ├── css/
 │   ├── images/

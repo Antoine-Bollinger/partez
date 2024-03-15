@@ -80,7 +80,11 @@ abstract class Controller implements Initializer\Controller
             if (!file_exists(APP_VIEW . "/pages/" . $file)) {
                 throw new \Exception("view", 500);
             }
-			echo $this->twig->render("pages/" . $file, $params);
+            echo str_replace(
+                "href=\"#", 
+                "href=\"" . ltrim($_SERVER["REQUEST_URI"], "/") . "#",
+                $this->twig->render("pages/" . $file, $params)
+            );
             return true;
         } catch(Exception $e) {
 			throw new \Exception($e);
