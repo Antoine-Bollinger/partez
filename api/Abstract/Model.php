@@ -1,7 +1,7 @@
 <?php
 namespace Partez\Api\Abstract;
 
-use \Partez\Api\Database\Database;
+use \Partez\Api\Provider\Database;
 
 /**
  * Class Model

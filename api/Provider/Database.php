@@ -1,5 +1,5 @@
 <?php 
-namespace Partez\Api\Database;
+namespace Partez\Api\Provider;
 
 use \Partez\Api\View\Response;
 

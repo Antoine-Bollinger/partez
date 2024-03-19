@@ -113,13 +113,15 @@ The basic structure is:
 ```bash
 .
 ├── api/
-│   ├── Abstract/
-│   ├── Config/
+│   ├── Abstract/ (Basic logic of the api)
+│   ├── Config/ (Configuration files)
 │   ├── Controller/
-│   ├── Database/
+│   │   └── [Controllers, typo is <Name>Controller.php]
 │   ├── Model/
-│   ├── Router/
-│   ├── View/
+│   │   └── [Models, typo is <Name>Model.php]
+│   ├── Provider/ (Providers logic like Database or any other resources provider)
+│   ├── Router/ (main router logic for the api)
+│   ├── View/ (set up a standardized response for every API request)
 │   └── Starter.php
 ├── public/
 │   ├── css/
@@ -129,7 +131,7 @@ The basic structure is:
 ├── src/
 │   ├── Abstract/ (Basic logic of the app)
 │   ├── App/ (Starter of the app)
-│   ├── Config/ (Some configuration file like Bootstrap or Session)
+│   ├── Config/ (Some configuration files like Bootstrap or Session)
 │   ├── Controller/
 │   │   └── [Controllers, typo is <Name>Controller.php]
 │   ├── Router/ (Contains main Router logic)
