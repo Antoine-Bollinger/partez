@@ -83,9 +83,13 @@ For this to work, each Controller must be block-commented in the following way:
 
 ```php
 /**
- * @Route("/", name="Home")
+ * @Route("/", name="Home", auth=false)
  */
 ```
+
+The first element, ```"/"``` is the URI through which the page will be accessible. It's mandatory. 
+The second element, ```name="Home"```is the name of the page. It is also mandatory.
+Finally, the third element allow you to restrict access to the page to logged in users, througt the ```$this->session->isLoggedAndAuthorized(true)```.
 
 ### The pages
 
