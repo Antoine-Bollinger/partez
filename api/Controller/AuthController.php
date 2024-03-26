@@ -42,7 +42,11 @@ final class AuthController extends Abstract\Controller
                         "token" => $token
                     ]);
                     $this->view->setCode(200);
-                    $this->view->setMessage($token);
+                    $this->view->setMessage("🎉 You have successfully logged in!");
+                    $this->view->setData([
+                        "id" => $this->post["userId"],
+                        "token" => $token
+                    ]);
                 } else {                
                     $this->view->setCode(401);
                     $this->view->setSuccess(false);
@@ -69,7 +73,11 @@ final class AuthController extends Abstract\Controller
     public function logout(
 
     ) :array {
-        $this->session->logout();
+        $headers = array_change_key_case(getallheaders());
+        $id = $headers["x-client-id"] ?? null;
+        $this->session->logout([
+            "userId" => $id
+        ]);
         $this->view->setMessage("You have successfully logged out from the application.");
         return $this->view->get();
     }

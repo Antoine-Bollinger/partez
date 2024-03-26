@@ -16,7 +16,8 @@ export default class Login {
                 body: new FormData(e.target)
             })
             const data = await login.json()
-            localStorage.setItem("token", data.message)
+            localStorage.setItem("token", data.data.token)
+            localStorage.setItem("id", data.data.id)
             location.reload()
         })
     }
@@ -26,11 +27,13 @@ export default class Login {
             e.preventDefault()
             await fetch(e.target.action, {
                 headers: {
-                    "Authorization": localStorage.getItem("token")
+                    "Authorization": localStorage.getItem("token"),
+                    "X-Client-ID": localStorage.getItem("id")
                 },
                 method: "POST",
             })
             localStorage.removeItem("token")
+            localStorage.removeItem("id")
             location.reload()
         })
     }
