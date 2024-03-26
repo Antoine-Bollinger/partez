@@ -1,7 +1,7 @@
 <?php
 namespace Partez\Api\View;
 
-use \ABollinger\Helpers;
+use \Abollinger\Helpers;
 
 /**
  * Class Response

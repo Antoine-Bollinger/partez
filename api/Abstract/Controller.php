@@ -1,7 +1,7 @@
 <?php
 namespace Partez\Api\Abstract;
 
-use \ABollinger\Helpers;
+use \Abollinger\Helpers;
 use \Partez\Api\View\Response;
 
 /**
