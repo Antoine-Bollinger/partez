@@ -47,7 +47,7 @@ final class Response
     public function sendJSON(
 
     ) :void {
-        http_response_code($this->getCode());
+        http_response_code($_SERVER['REQUEST_METHOD'] === 'OPTIONS' ? 200 : $this->getCode());
         header("Access-Control-Allow-Origin: " . ALLOW_ORIGIN);
         header("Access-Control-Allow-Methods: " . ALLOW_METHODS);
         header("Access-Control-Allow-Headers: Content-Type, Authorization");
