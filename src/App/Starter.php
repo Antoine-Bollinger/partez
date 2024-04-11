@@ -2,8 +2,9 @@
 namespace Partez\App;
 
 use \Partez\Config\Bootstrap;
-use \Abollinger\Session;
 use \Partez\Router\Router;
+
+use \Abollinger\Session;
 
 /**
  * Class Starter

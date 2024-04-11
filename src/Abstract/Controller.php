@@ -18,8 +18,8 @@ use \Twig\Extension\DebugExtension;
  */
 abstract class Controller implements Initializer\Controller
 {
+    /** @var Environment $twig */
     private $twig;
-    public $params;
 
     /**
      * Constructor for the class.
@@ -30,9 +30,8 @@ abstract class Controller implements Initializer\Controller
      * @param mixed|null $params Parameters passed to the constructor (default: null)
      */
     public function __construct(
-        $params = null
+        public mixed $params = null
     ) {
-        $this->params = $params;
         $this->setTwig();
         $this->init();
     }

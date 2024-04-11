@@ -24,6 +24,11 @@ abstract class Model
     public function __construct(
 
     ) {
-        $this->db = new Database();     
+        $this->db = new Database(
+            $_ENV["D_HOST"],
+            $_ENV["D_NAME"],
+            $_ENV["D_USER"],
+            $_ENV["D_PWD"]
+        );     
     }
 }

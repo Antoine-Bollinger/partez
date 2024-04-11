@@ -6,19 +6,14 @@ use \Partez\Controller\ErrorController;
 
 use \Abollinger\Helpers;
 use \Abollinger\Session;
-use \Abollinger\RouteReader;
 
 /**
  * Class AppRouter
  *
  * Manages routing for the application, finds and renders requested routes, and handles error scenarios.
  */
-final class Router extends Abstract\Router 
-{
-    /** @var array $params Parameters for the router. */
-    private $params;
-
-        
+final class Router extends \Abollinger\Router 
+{        
     /** @var Session $session Session object for handling user sessions. */
     private $session;
 
@@ -31,7 +26,7 @@ final class Router extends Abstract\Router
      * @param array $params Parameters passed to the router (default: [])
      */
     public function __construct(
-        $params = []
+        private array $params = []
     ) {
         $this->params = Helpers::defaultParams([
             "url" => parse_url($_SERVER["REQUEST_URI"])["path"]
@@ -49,9 +44,8 @@ final class Router extends Abstract\Router
     public function init(
 
     ) :void {
-        $this->requestedRoute = $this->getRequestedRoute($this->params["url"]);
-        $reader = new RouteReader();
-        $this->routes = $reader->getRoutesFromDirectory(APP_CONTROLLER, "\Partez");
+        $this->requestedRoute = $this->getRequestedRoute($this->params["url"], APP_SUBDIR);
+        $this->routes = $this->getRoutesFromDirectory(APP_CONTROLLER, "\Partez");
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
     }
 

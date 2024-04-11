@@ -13,7 +13,7 @@ use \Abollinger\RouteReader;
  *
  * Handles routing for the API, authorizes access, and executes controller methods based on routes and HTTP verbs.
  */
-final class Router extends Abstract\Router 
+final class Router extends \Abollinger\Router
 {
     /** @var array $params Parameters for the API router. */
     private $params;
@@ -40,9 +40,8 @@ final class Router extends Abstract\Router
             "verb" => $_SERVER["REQUEST_METHOD"],
             "isSameServer" => false
         ], $params);
-        $this->requestedRoute = $this->getRequestedRoute($this->params["url"]);
-        $reader = new RouteReader();
-        $this->routes = $reader->getRoutesFromYaml(API_ROUTES);
+        $this->requestedRoute = $this->getRequestedRoute($this->params["url"], APP_SUBDIR);
+        $this->routes = $this->getRoutesFromYaml(API_ROUTES);
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
         $this->session = new Session(); 
         $this->view = new Response();
@@ -90,7 +89,7 @@ final class Router extends Abstract\Router
             $className = $tmp[0];
             $method = $tmp[1];
             $controller = new $className();
-            $response = $controller->{$method}();
+            $response = $controller->{$method}($this->route["params"]);
             $this->view->set($response);
         } catch(\Exception $e) {
             $this->view->set([
@@ -115,7 +114,7 @@ final class Router extends Abstract\Router
             return $this->view->get();
         else 
             $this->view->sendJSON();
-            exit(null);
+            exit;
     }
 
     /**
@@ -129,14 +128,11 @@ final class Router extends Abstract\Router
         $route = [],
         $verb = ""
     ) :bool {
-        $checkVerb = false;
         try {
-            if (!is_array($route)) return false;
-            $checkVerb = strcasecmp($route["verb"], $verb) === 0;
+            return is_array($route) && strcasecmp($route["verb"], $verb) === 0;
         } catch(\Exception $e) {
             return false;
         }
-        return $checkVerb;
     }
 
     /**
