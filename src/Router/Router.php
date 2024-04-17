@@ -45,7 +45,7 @@ final class Router extends \Abollinger\Router
 
     ) :void {
         $this->requestedRoute = $this->getRequestedRoute($this->params["url"], APP_SUBDIR);
-        $this->routes = $this->getRoutesFromDirectory(APP_CONTROLLER, "\Partez");
+        $this->routes = $this->getRoutesFromDirectory(APP_CONTROLLER, "\\Partez");
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
     }
 
