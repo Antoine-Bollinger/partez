@@ -138,8 +138,8 @@ The basic structure is:
 │   ├── Config/ (Some configuration files like Bootstrap or Session)
 │   ├── Controller/
 │   │   └── [Controllers, typo is <Name>Controller.php]
-│   ├── Router/ (Contains main Router logic)
-│   └── view/ (Contain Twig templates for your app)
+│   └── Router/ (Contains main Router logic)
+├── view/ (Contain Twig templates for your app)
 └── .env
 ```
 

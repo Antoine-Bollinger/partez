@@ -36,7 +36,7 @@ final class Bootstrap
             "APP_SUBDIR" => Helpers::getAppSubdirectory(APP_ROOT, $_SERVER["DOCUMENT_ROOT"]),
             "APP_CONFIG" => APP_ROOT . "/src/Config",
             "APP_CONTROLLER" => APP_ROOT . "/src/Controller",
-            "APP_VIEW" => APP_ROOT . "/src/view"
+            "APP_VIEW" => APP_ROOT . "/view"
         ]);
        
         if (isset($_ENV["APP_ENV"]) && $_ENV["APP_ENV"] === "dev")

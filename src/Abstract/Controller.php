@@ -21,6 +21,12 @@ abstract class Controller implements Initializer\Controller
     /** @var Environment $twig */
     private $twig;
 
+    /** @var array Error messages */
+    protected $errorMessages = [];
+    
+    /** @var array Available error pages */
+    protected $availableErrorPages = [];
+
     /**
      * Constructor for the class.
      *
@@ -33,6 +39,8 @@ abstract class Controller implements Initializer\Controller
         public mixed $params = null
     ) {
         $this->setTwig();
+        $this->setAvailableErrorPages();
+        $this->setErrorMessages();
         $this->init();
     }
 
@@ -70,6 +78,7 @@ abstract class Controller implements Initializer\Controller
      * @param string $file  Name of the twig file to be rendered
      * @param array $params An array of variables passes to the twig template
      * @return bool
+     * @throws \Exception
      */
     public function renderPage(
         $file = "",
@@ -85,9 +94,8 @@ abstract class Controller implements Initializer\Controller
                 $this->twig->render("pages/" . $file, $params)
             );
             return true;
-        } catch(Exception $e) {
-			throw new \Exception($e);
-            return false;
+        } catch(\Exception $e) {
+			throw $e;
 		}
     }
 
@@ -96,6 +104,7 @@ abstract class Controller implements Initializer\Controller
      * 
      * @param string $file  Name of the Markdown file to be read
      * @return string|bool  Return a HTML string of the file or false if an error occured.
+     * @throws \Exception
      */
     public function renderMd(
 		$file = ""
@@ -108,9 +117,8 @@ abstract class Controller implements Initializer\Controller
             $text = str_replace("/public/", "", $text);
             $Parsedown = new Parsedown();
             return $Parsedown->text($text);
-        } catch(Exception $e) {
-			throw new \Exception($e);
-            return false;
+        } catch(\Exception $e) {
+			throw $e;
 		}
 	}
 
@@ -119,6 +127,7 @@ abstract class Controller implements Initializer\Controller
      * 
      * @param string $file      Name of the Markdown file to be read
      * @return string|bool   Return a HTML string of the file or false if an error occured.
+     * @throws \Exception
      */
     public function renderYaml(
         $file = ""
@@ -129,9 +138,8 @@ abstract class Controller implements Initializer\Controller
             }
             $text = Helpers::getYaml($file);
             return Helpers::printArray($text);
-        } catch(Exception $e) {
-			throw new \Exception($e);
-            return false;
+        } catch(\Exception $e) {
+			throw $e;
 		}
     }
 
@@ -140,6 +148,7 @@ abstract class Controller implements Initializer\Controller
      * 
      * @param string $file      Name of the Markdown file to be read
      * @return string|bool   Return a HTML string of the file or false if an error occured.
+     * @throws \Exception
      */
     public function renderScan(
         $file = "",
@@ -151,9 +160,29 @@ abstract class Controller implements Initializer\Controller
             }
             $text = Helpers::getScan($file, $root);
             return Helpers::printArray($text);
-        } catch(Exception $e) {
-			throw new \Exception($e);
-            return false;
+        } catch(\Exception $e) {
+			throw $e;
 		}
+    }
+
+    /**
+     * Retrieve available error pages.
+     */
+    private function setAvailableErrorPages(
+
+    ) :void {
+        foreach (scandir(APP_VIEW . "/pages/errors/") as $value) {
+            if (in_array($value, array(".", "..")) || !strpos($value, ".html.")) continue;
+            $this->availableErrorPages[str_replace(".html.twig", "", $value)] = $value;
+        }
+    }
+
+    /**
+     * Retrieve error messages.
+     */
+    private function setErrorMessages(
+
+    ) :void {
+        $this->errorMessages = Helpers::getYaml(APP_CONFIG . "/texts.yaml")["error"];
     }
 }
