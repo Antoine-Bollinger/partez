@@ -53,5 +53,10 @@
     "config": {
         "process-timeout": 0
     },
+<<<<<<< HEAD
     "version": "v2.6.4"
 }
+=======
+    "version": "v2.6.3"
+}
+>>>>>>> 09c46c65e236bda970d14dcef664b377d82b5423
