@@ -6,7 +6,8 @@ html {
     scroll-padding-top: 60px;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     width: 100%;
 }
@@ -36,12 +37,13 @@ pre.snapshot {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 }
 
-pre > a {
+pre>a {
     content: "📋";
     position: absolute;
     top: var(--bs-body-font-size);
@@ -53,12 +55,12 @@ pre > a {
     z-index: 1;
 }
 
-pre:hover > a {
+pre:hover>a {
     opacity: 0.4;
 }
 
-pre:hover > a:hover {
-    opacity: 1!important;
+pre:hover>a:hover {
+    opacity: 1 !important;
 }
 
 .grayscale {
