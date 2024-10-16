@@ -25,10 +25,6 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Test SSH connection
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "echo 'SSH connection successful'"
-
       - name: Sync files to server
         run: |
           rsync -avz --delete --exclude="assets" ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/ -v
