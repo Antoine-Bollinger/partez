@@ -22,18 +22,16 @@ jobs:
       - name: Install dependencies (Composer)
         run: composer install --no-dev --prefer-dist --no-progress --no-scripts
 
-      - name: Deploy using ssh
-        uses: appleboy/ssh-action@master
-        with: 
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            rsync -avz --delete \
-              --exclude=".git" \
-              --exclude="assets" \
-              --exclude="node_modules" \
-              --exclude="vendor" \
-              ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/
-              
+      - name: Setup SSH for rsync
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Sync files to server
+        run: |
+          rsync -avz --delete \
+            --exclude=".git" \
+            --exclude="assets" \
+            --exclude="node_modules" \
+            --exclude="vendor" \
+            ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/
