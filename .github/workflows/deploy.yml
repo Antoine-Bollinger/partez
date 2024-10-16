@@ -3,7 +3,7 @@ name: Deploy PHP App
 on:
   push:
     branches:
-      - release  # Deploy only when code is pushed to the main branch
+      - release  # Deploy only when code is pushed to the release branch
 
 jobs:
   deploy:
@@ -26,7 +26,13 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
       - name: Sync files to server
         run: |
           rsync -avz --delete \
