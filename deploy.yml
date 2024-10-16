@@ -1,0 +1,39 @@
+name: Deploy PHP App
+
+on:
+  push:
+    branches:
+      - release  # Deploy only when code is pushed to the main branch
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'  # Use the PHP version you need
+          extensions: mbstring, mysqli, pdo, pdo_mysql  # Add necessary PHP extensions
+
+      - name: Install dependencies (Composer)
+        run: composer install --no-dev --prefer-dist --no-progress --no-scripts
+
+      - name: Sync files to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H sftp.sd5.gpaas.net >> ~/.ssh/known_hosts
+          
+          rsync -avz --delete \
+            --exclude=".git" \
+            --exclude="vendor" \
+            --exclude="node_modules" \
+            ./ 5869558@sftp.sd5.gpaas.net:/srv/data/web/vhosts/partez.net/htdocs/
