@@ -40,4 +40,6 @@ jobs:
             --exclude="assets" \
             --exclude="node_modules" \
             --exclude="vendor" \
+            --logfile \
+            --logpriority \
             ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/
