@@ -1,18 +1,31 @@
-name: scp files
-on: [push]
-jobs:
+name: Deploy with SCP
 
-  build:
-    name: Build
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        source: "./"
-        target: /srv/data/web/vhosts/partez.net/htdocs/
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies (Composer)
+        run: composer install --no-dev --prefer-dist --no-progress --no-scripts
+
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}                # Your server IP or domain
+          username: ${{ secrets.USERNAME }}        # SSH username
+          key: ${{ secrets.SSH_PRIVATE_KEY }}      # SSH private key from GitHub secrets
+          port: 22                                # SSH port (default 22)
+          source: "."                             # The files to copy (current directory)
+          target: "/srv/data/web/vhosts/partez.net/htdocs/"  # Target directory on the server
+          strip_components: 1                     # Optional: strips directory components
+
+      - name: Restart Server (Optional)
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "sudo systemctl restart apache2"
