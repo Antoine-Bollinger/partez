@@ -25,6 +25,10 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Sync files to server
-        run: |
-          rsync -avz --delete --exclude="assets" / ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/
+      - name: Copy to Remote Server
+        uses: pierrickdekrue/scp-action@v0.1.0
+        with: 
+          host: ${{ secrets.HOST }}
+          ssh_username: ${{ secrets.USERNAME }}
+          ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          destination_dir: /srv/data/web/vhosts/partez.net/htdocs/
