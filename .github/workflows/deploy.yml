@@ -26,9 +26,10 @@ jobs:
           chmod 644 ~/.ssh/known_hosts
 
       - name: Copy to Remote Server
-        uses: pierrickdelrieu/scp-action@v0.1.0
+        uses: pierrickdelrieu/scp-action@v0.1.1
         with: 
           host: ${{ secrets.HOST }}
           ssh_username: ${{ secrets.USERNAME }}
           ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          destination_dir: /srv/data/web/vhosts/partez.net/htdocs/
+          destination_dir: /srv/data/web/vhosts/partez.net/htdocs/ 
+          rm: true
