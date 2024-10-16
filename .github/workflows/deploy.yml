@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Copy to Remote Server
-      uses: pierrickdelrieu/scp-action
+      uses: pierrickdelrieu/scp-action@v0.1.1
       with:
           host: ${{ secrets.HOST }}
           ssh_username: ${{ secrets.USERNAME }}
