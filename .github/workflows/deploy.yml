@@ -1,33 +1,22 @@
-name: Deploy PHP App
+name: Copy files with SCP
 
 on:
   push:
     branches:
-      - release  # Deploy only when code is pushed to the release branch
+      - release
+  workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy to Server
+  copy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup SSH for rsync
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add server to known hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Copy to Remote Server
-        uses: pierrickdelrieu/scp-action@v0.1.1
-        with: 
+    - name: Copy to Remote Server
+      uses: pierrickdelrieu/scp-action
+      with:
           host: ${{ secrets.HOST }}
           ssh_username: ${{ secrets.USERNAME }}
           ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
