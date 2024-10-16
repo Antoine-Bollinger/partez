@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install dependencies (Composer)
-        run: composer install --no-dev --prefer-dist --no-progress --no-scripts
-
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -26,6 +23,7 @@ jobs:
           source: "."                             # The files to copy (current directory)
           target: "/srv/data/web/vhosts/partez.net/htdocs/"  # Target directory on the server
           strip_components: 1                     # Optional: strips directory components
+          debug: true
 
       - name: Restart Server (Optional)
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "sudo systemctl restart apache2"
