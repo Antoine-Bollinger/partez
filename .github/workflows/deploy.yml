@@ -31,4 +31,4 @@ jobs:
 
       - name: Sync files to server
         run: |
-          rsync -avz --delete --exclude="assets" ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/
+          rsync -avz --delete --exclude="assets" ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/srv/data/web/vhosts/partez.net/htdocs/ -v
