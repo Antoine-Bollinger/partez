@@ -22,8 +22,8 @@ jobs:
           port: 22                                # SSH port (default 22)
           source: "."                             # The files to copy (current directory)
           target: "/srv/data/web/vhosts/partez.net/htdocs/"  # Target directory on the server
-          strip_components: 1                     # Optional: strips directory components
-          debug: true
+          tar_dereference: true
+          rm: true
 
-      - name: Restart Server (Optional)
+      - name: Restart Server
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "sudo systemctl restart apache2"
