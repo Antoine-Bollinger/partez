@@ -22,6 +22,11 @@ jobs:
       - name: Install dependencies (Composer)
         run: composer install --no-dev --prefer-dist --no-progress --no-scripts
 
+      - name: Setup SSH for rsync
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
       - name: Sync files to server
         run: |
           rsync -avz --delete \
