@@ -14,20 +14,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Setup SSH for rsync
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Install dependencies (Composer)
         run: composer install --no-dev --prefer-dist --no-progress --no-scripts
 
       - name: Sync files to server
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H sftp.sd5.gpaas.net >> ~/.ssh/known_hosts
-          
           rsync -avz --delete \
             --exclude=".git" \
-            --exclude="vendor" \
+            --exclude="assets" \
             --exclude="node_modules" \
+            --exclude="vendor" \
             ./ 5869558@sftp.sd5.gpaas.net:/srv/data/web/vhosts/partez.net/htdocs/
