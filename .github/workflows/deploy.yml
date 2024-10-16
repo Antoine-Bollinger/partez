@@ -1,24 +1,18 @@
-name: Copy files with SCP
-
-on:
-  push:
-    branches:
-      - release
-  workflow_dispatch:
-
+name: scp files
+on: [push]
 jobs:
-  copy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
 
-    - name: Copy to Remote Server
-      uses: pierrickdelrieu/scp-action@v0.1.1
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.7
       with:
-          host: ${{ secrets.HOST }}
-          ssh_username: ${{ secrets.USERNAME }}
-          ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          destination_dir: /srv/data/web/vhosts/partez.net/htdocs/ 
-          rm: true
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        source: "./"
+        target: /srv/data/web/vhosts/partez.net/htdocs/
