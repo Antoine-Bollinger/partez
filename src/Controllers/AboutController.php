@@ -1,5 +1,5 @@
 <?php 
-namespace Partez\Controller;
+namespace Partez\Controllers;
 
 use \Partez\Abstract;
 
@@ -11,7 +11,7 @@ final class AboutController extends Abstract\Controller
     public function init(
 
     ) {
-        $this->renderPage("about.html.twig", [
+        $this->renderPage("AboutView.twig", [
             "readme" => $this->renderMd(APP_ROOT . "/README.md")
         ]);
     }

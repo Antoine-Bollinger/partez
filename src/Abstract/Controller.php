@@ -57,7 +57,7 @@ abstract class Controller implements Initializer\Controller
     private function setTwig(
         $cache = false
     ) :bool {
-        $loader = new FilesystemLoader(APP_VIEW);
+        $loader = new FilesystemLoader(APP_VIEWS);
         $this->twig = new Environment($loader, [
             "cache" => $cache,
             "debug" => true
@@ -85,7 +85,7 @@ abstract class Controller implements Initializer\Controller
         $params = []
     ) :bool {
         try {
-            if (!file_exists(APP_VIEW . "/pages/" . $file)) {
+            if (!file_exists(APP_VIEWS . "/pages/" . $file)) {
                 throw new \Exception("view", 500);
             }
             echo str_replace(
@@ -171,9 +171,9 @@ abstract class Controller implements Initializer\Controller
     private function setAvailableErrorPages(
 
     ) :void {
-        foreach (scandir(APP_VIEW . "/pages/errors/") as $value) {
+        foreach (scandir(APP_VIEWS . "/pages/errors/") as $value) {
             if (in_array($value, array(".", "..")) || !strpos($value, ".html.")) continue;
-            $this->availableErrorPages[str_replace(".html.twig", "", $value)] = $value;
+            $this->availableErrorPages[str_replace(".twig", "", $value)] = $value;
         }
     }
 

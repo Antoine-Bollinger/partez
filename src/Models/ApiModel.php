@@ -1,5 +1,5 @@
 <?php
-namespace Partez\Model;
+namespace Partez\Models;
 
 use \Partez\Api\Starter as Api;
 

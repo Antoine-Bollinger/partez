@@ -1,0 +1,25 @@
+{% extends "Layout.twig" %}
+
+{% block main %}
+	<main class="container d-flex flex-column align-items-center justify-content-center">
+		{% if _params.auth == false %}
+			<form method="post" action="api/login" name="login">
+				<div class="mb-3">
+					<label for="userId" class="form-label">UserId</label>
+					<input type="text" class="form-control" id="userId" aria-describedby="userIdHelp" name="userId">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Password</label>
+					<input type="password" class="form-control" id="password" name="password">
+				</div>
+				<button type="submit" class="btn btn-outline-secondary">Login</button>
+			</form>
+		{% else %}
+			<p>Welcome on board
+				{{ _session.userId }}!</p>
+			<form method="post" action="api/logout" name="logout">
+				<button type="submit" class="btn btn-danger">Logout</button>
+			</form>
+		{% endif %}
+	</main>
+{% endblock %}

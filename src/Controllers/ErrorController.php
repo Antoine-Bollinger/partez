@@ -1,5 +1,5 @@
 <?php
-namespace Partez\Controller;
+namespace Partez\Controllers;
 
 use \Partez\Abstract;
 use \Abollinger\Helpers;
@@ -9,7 +9,7 @@ use \Abollinger\Helpers;
  * 
  * Controller for handling errors.
  * 
- * @package Partez\Controller
+ * @package Partez\Controllers
  */
 final class ErrorController extends Abstract\Controller 
 {
@@ -19,7 +19,7 @@ final class ErrorController extends Abstract\Controller
     public function init(
 
     ) :void {
-        $this->renderPage("errors/" . ($this->availableErrorPages[$this->params["code"]] ?? "error.html.twig"), [
+        $this->renderPage("errors/" . ($this->availableErrorPages[$this->params["code"]] ?? "Error.twig"), [
             "code" => $this->params["code"],
             "message" => $this->errorMessages[$this->params["message"]] ?? $this->params["message"]
         ]);

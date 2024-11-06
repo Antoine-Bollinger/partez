@@ -2,7 +2,7 @@
 namespace Partez\Router;
 
 use \Partez\Abstract;
-use \Partez\Controller\ErrorController;
+use \Partez\Controllers\ErrorController;
 
 use \Abollinger\Helpers;
 use \Abollinger\Session;
@@ -45,7 +45,7 @@ final class Router extends \Abollinger\Router
 
     ) :void {
         $this->requestedRoute = $this->getRequestedRoute($this->params["url"], APP_SUBDIR);
-        $this->routes = $this->getRoutesFromDirectory(APP_CONTROLLER, "\\Partez");
+        $this->routes = $this->getRoutesFromDirectory(APP_CONTROLLERS, "\\Partez\\Controllers\\");
         $this->route = $this->findMatchingRoute($this->routes, $this->requestedRoute);
     }
 

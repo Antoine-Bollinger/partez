@@ -1,5 +1,5 @@
 <?php 
-namespace Partez\Controller;
+namespace Partez\Controllers;
 
 use \Partez\Abstract;
 
@@ -11,6 +11,6 @@ final class HomeController extends Abstract\Controller
     public function init(
 
     ) {
-        $this->renderPage("home.html.twig");
+        $this->renderPage("HomeView.twig");
     }
 }

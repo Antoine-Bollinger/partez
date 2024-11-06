@@ -35,8 +35,8 @@ final class Bootstrap
         Helpers::defineConstants([
             "APP_SUBDIR" => Helpers::getAppSubdirectory(APP_ROOT, $_SERVER["DOCUMENT_ROOT"]),
             "APP_CONFIG" => APP_ROOT . "/src/Config",
-            "APP_CONTROLLER" => APP_ROOT . "/src/Controller",
-            "APP_VIEW" => APP_ROOT . "/view"
+            "APP_CONTROLLERS" => APP_ROOT . "/src/Controllers",
+            "APP_VIEWS" => APP_ROOT . "/views"
         ]);
        
         if (isset($_ENV["APP_ENV"]) && $_ENV["APP_ENV"] === "dev")

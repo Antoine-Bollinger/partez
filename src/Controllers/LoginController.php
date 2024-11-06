@@ -1,5 +1,5 @@
 <?php 
-namespace Partez\Controller;
+namespace Partez\Controllers;
 
 use \Partez\Abstract;
 
@@ -11,7 +11,7 @@ final class LoginController extends Abstract\Controller
     public function init(
 
     ) {
-        $this->renderPage("login.html.twig");
+        $this->renderPage("LoginView.twig");
     }
 }
 
