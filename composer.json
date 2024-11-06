@@ -55,6 +55,5 @@
     },
     "config": {
         "process-timeout": 0
-    },
-    "version": "v2.6.4"
+    }
 }
