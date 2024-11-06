@@ -50,12 +50,12 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php bricolo log m=afterinstall",
-            "npm install"
+            "npm install",
+            "@php bricolo log m=afterinstall"
         ]
     },
     "config": {
         "process-timeout": 0
     },
-    "version": "v2.6.9"
+    "version": "v2.7.0"
 }
