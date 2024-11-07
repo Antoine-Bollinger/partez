@@ -1,8 +1,8 @@
 - path: /api/login
   verb: post
   auth: false
-  controller: 'Partez\Api\Controller\AuthController::login'
+  controller: 'Partez\Api\Controllers\AuthController::login'
 - path: /api/logout
   verb: post
   auth: true
-  controller: 'Partez\Api\Controller\AuthController::logout'
+  controller: 'Partez\Api\Controllers\AuthController::logout'

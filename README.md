@@ -11,75 +11,82 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 [![License](https://img.shields.io/packagist/l/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 
-This kit is intended to help developpers to quickly create a simple PHP app.
-
-This project is published on **[Packagist](https://packagist.org/packages/abollinger/partez)** so you can create a new project based on it.
+Partez is a PHP starter kit designed to help developers quickly set up and manage a PHP web application. It includes robust backend support with streamlined front-end automation via `bricolo`, a JS package that compiles assets, serves your app, and provides live reloading for a smooth development workflow.
 
 ![Home](/public/images/preview.jpg)
 
-<!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary><b>Table of Contents</b></summary>
   <ol>
-    <li>
-      <a href="#getting-started">Getting started</a>
-      <ul>
-        <li><a href="#requirements">Requirements</a></li>
-        <li><a href="#steps">Steps</a></li>
-      </ul>
+    <li><a href="#getting-started">Getting Started</a>
+        <ul>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#installation-and-setup">Installation and Setup</a></li>
+        </ul>
     </li>
-    <li><a href="#how-it-works">How it works</a></li>
-      <ul>
-        <li><a href="/#configuration">Configuration</a></li>
-        <li><a href="#the-router">The router</a></li>
-        <li><a href="#the-pages">The pages</a></li>
-        <li><a href="#the-public-folder">The public folder</a></li>
-        <li><a href="#the-api">The API</a></li>
-      </ul>
-    <li><a href="#build-with">Build with</a></li>
+    <li><a href="#how-it-works">How It Works</a>
+        <ul>
+            <li><a href="#configuration">Configuration</a></li>
+            <li><a href="#the-router">The Router</a></li>
+            <li><a href="#the-pages">The Pages</a></li>
+            <li><a href="#the-public-folder">The Public Folder</a></li>
+            <li><a href="#the-api">The API</a></li>
+        </ul>
+    </li>
+    <li><a href="#bricolo-js-automation">Bricolo JS Automation</a></li>
+        <ul>
+            <li><a href="#bricolo-js-configuration">Configuration</a></li>
+            <li><a href="#usage">Usage</a></li>
+        </ul>
+    </li>
+    <li><a href="#built-with">Built With</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
+<!-- GETTING STARTED -->
+
 ## Getting started
 
 ### Requirements
 
-All you need is [Composer](https://getcomposer.org/) to create the project run the server (in developpement mode).
+- [Composer](https://getcomposer.org/) for backend dependency management.
+- [Node.js](https://nodejs.org/) (v12 or higher) and npm for `bricolo` to enable asset compilation and live reloading.
 
-### Steps
+### Installation and Setup
 
-1. First create a new folder for your project and open a terminal in it
+1. **Project Setup**: Create a new folder for your project and open a terminal in it.
 
-2. Run the following command. This will create all the necessaries files and install the dependencies of the project:
+2. **Install the PHP Framework**: Run this command to install Partez and its dependencies:
 
 ```bash
 composer create-project abollinger/partez .
 ```
 
-3. Then you will have to create a ```.env``` file at the root of your project. This is supposed to be done automatically but if it is not, you can use the ```.env.example``` to see what the .env can contain at this moment.
+3. **Create a `.env` File**: If not automatically created, create a `.env` file at the project root. You can use .env.example as a reference.
 
-4. Finally run this simple command:
+4. **Automatic Front-End Setup with `bricolo`**: `bricolo` is automatically installed via npm as part of the post-create command in `composer.json`. This includes asset compilation and live reloading.
+
+5. Run the Development Server: Start the server with the command below to view the app in your browser at <a href="http://localhost:1234">localhost:1234</a> (the port may change according to the other ports already in use on your machine. Please check the log in the console):
 
 ```bash
 composer serve
 ``` 
 
-and then open your browser at <a href="http://localhost:1234">localhost:1234</a> to see the result (the port may change according to the other ports already in use on your machine. Please check the log in the console).
+<!-- HOW IT WORKS -->
 
 ## How it works
 
 ### Configuration
 
-1. You may want to customized the HTML head of you app. Please go the ```src/view/layout.html.twig``` file and make the change you need.
+1. **HTML Customization**: Modify the HTML layout in `src/views/Layout.twig` to adjust the document head.
 
-2. Regarding the router configuration, it is described below.
+2. **Routing**: Routes are automatically derived from controllers in `src/Controllers` using specific annotations (see below).
 
-### The router
+### The Router
 
-Routes are automatically derived from Controller files contained in the ```src/Controller``` folder.
-For this to work, each Controller must be block-commented in the following way:
+Define routes in src/Controllers files using PHP annotations:
 
 ```php
 /**
@@ -87,24 +94,102 @@ For this to work, each Controller must be block-commented in the following way:
  */
 ```
 
-The first element, ```"/"``` is the URI through which the page will be accessible. It's mandatory. 
-The second element, ```name="Home"```is the name of the page. It is also mandatory.
-Finally, the third element allow you to restrict access to the page to logged in users, througt the ```$this->session->isLoggedAndAuthorized(true)```.
+- URI (`"/"`) is mandatory.
+- Name (`name="Home"`) specifies the route's name.
+- Authentification (`auth=false`) restricts the access if set to `true`  (default is `false`).
 
-### The pages
+### The Pages
 
-Pages are rendered by the controller in the ```src/Controller``` path. This controller must be an extension of the main controller define in ```Abstract/Controller.php```.
-In the page's controller you must define the ```init()``` method that will call the ```renderView("page.html.twig")``` method which render the twig template.
+Controllers in `src/Controllers` extend the main controller (`Abstract/Controller.php`). The `init()` method call `renderPage("Page.twig")` to render the Twig template. Each page extends the main layout in `src/views/Layout.twig`.
 
-The twig templates are localized in the ```src/view``` at the root of the project. Basic twig layout is defined as ```src/view/layout.html.twig``` and each page's twig template extends this layout.
+### The Public Folder 
 
-### The public folder
-
-The ```public``` directory contains the index.php entry point, basics js, css and images folder. Please feel free to customized this part.
+The public directory houses `index.php`, as well as `js`, `css` and `images` folders, which can be customized freely.
 
 ### The API
 
-A basic API is available in the ```api/``` folder. This API is powered by a database running on MySQL.
+A basic API is available in `api/` and runs on a MySQL database.
+
+<!-- BRICOLO JS AUTOMATION -->
+
+## Bricolo JS Automation
+
+The Partez PHP framework includes `bricolo` as an automation tool for front-end tasks, so you can focus on development without needing to handle asset compilation or live reloading setup yourself. `bricolo` is installed automatically during setup, and it's already configured with a bricoloconfig.json file that defines custom settings to integrate with this project.
+
+You can find more information on the [npm](https://www.npmjs.com/package/bricolo) of the `bricolo` (js) package.
+
+### Bricolo JS Configuration
+
+`bricolo` is automatically installed within the project and configured with the file `bricoloconfig.json`:
+
+```json
+{
+    "phpServer": {
+        "port": 8080,
+        "command": "composer serve p={port}"
+    },
+    "jsBuild": {
+        "entry": "assets/js/main.ts",
+        "output": "public/js/bundle.js"
+    },
+    "sassBuild": {
+        "entry": "assets/css/main.scss",
+        "output": "public/css/style.min.css"
+    },
+    "watch": {
+        "directories": [
+            "src/**/*.php",
+            "src/**/*.yaml",
+            "view/**/*.twig",
+            "public/**/*.css",
+            "public/**/*.js",
+            "public/**/*.svg"
+        ]
+    },
+    "server": {
+        "port": 1234
+    }
+}
+```
+
+**Configuration Overview**
+
+- **PHP Server**: The PHP server will run on port 8080 using the command `composer serve p={port}`.
+
+- **Asset Compilation:**
+
+    - **JavaScript**: Compiles assets/js/main.ts into a bundle at public/js/bundle.js.
+    - **CSS**: Compiles assets/css/main.scss into a minified CSS file at public/css/style.min.css.
+
+
+- **File Watching**:
+
+    - `bricolo` monitors files in specified directories (`src/**/*.php`, `view/**/*.twig`, `public/**/*.css`, etc.) for changes, which will trigger asset compilation and live browser reload.
+
+
+- **Live Reload Server**: The development server is set to run on port 1234 for hot reloading.
+
+### Usage
+
+After creating the project, you can simply start the bricolo automation and server:
+
+```bash
+npm run serve
+```
+
+Or, if you prefer, use the command directly:
+
+```bash
+npx bricolo serve
+```
+
+This command will:
+
+1. Start the PHP server on port 8080.
+2. Compile and watch for changes in JavaScript and Sass files.
+3. Automatically reload the browser at <a href="http://localhost:1234">localhost:1234</a> whenever changes are detected in watched files.
+
+<!-- BUILD WITH -->
 
 ## Build with
 
@@ -119,9 +204,9 @@ The basic structure is:
 ├── api/
 │   ├── Abstract/ (Basic logic of the api)
 │   ├── Config/ (Configuration files)
-│   ├── Controller/
+│   ├── Controllers/
 │   │   └── [Controllers, typo is <Name>Controller.php]
-│   ├── Model/
+│   ├── Models/
 │   │   └── [Models, typo is <Name>Model.php]
 │   ├── Provider/ (Providers logic like Database or any other resources provider)
 │   ├── Router/ (main router logic for the api)
@@ -147,22 +232,19 @@ The basic structure is:
 
 ## Contributing
 
-Any contributions you could make will be amazingly appreciated! Please follow this steps to submit your ideas:
+We welcome contributions! Here’s how to contribute:
 
-- Fork the project
-- Create your feature branch widh ```git checkout -b features/Myfeature```
-- Commit your work ```git commit -m "✨ Introducing Myfeature!"```
-- Push ```git push origin features/Myfeature```
-- Open a Pull Request
-
-We'll make a review of your work and merge it to the master branch if everything's OK.
-Do not hesitate, every little contribution is a great way to make this starter kit getting bigger!
+- **Fork** the project.
+- **Create your feature branch**: ```git checkout -b features/Myfeature```.
+- **Commit your changes**: ```git commit -m "✨ Introducing Myfeature!"```.
+- **Push to Github**: ```git push origin features/Myfeature```.
+- **Open a Pull Request**.
 
 <!-- CONTACT -->
 
 ## Contact
 
-If you have any question about this package, how to install, to use or to improve, feel free to contact me:
+If you have any questions, feel free to reach out:
 
 Antoine Bollinger - [LinkedIn](https://www.linkedin.com/in/antoinebollinger/) - [antoine.bollinger@gmail.com](mailto:antoine.bollinger@gmail.com)
 

@@ -1,13 +1,13 @@
 {
-  "name": "partez",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "dev": "bricolo serve"
-  },
-  "author": "Antoine Bollinger",
-  "license": "ISC",
-  "dependencies": {
-    "bricolo": "^1.5.1"
-  }
+    "name": "partez",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "bricolo serve"
+    },
+    "author": "Antoine Bollinger",
+    "license": "ISC",
+    "dependencies": {
+        "bricolo": "^1.5.1"
+    }
 }

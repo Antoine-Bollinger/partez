@@ -16,3 +16,7 @@ redirect.php
 
 # VSCode 
 .vscode
+
+# Old
+*_old.*
+*_old/

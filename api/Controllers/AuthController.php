@@ -1,8 +1,8 @@
 <?php 
-namespace Partez\Api\Controller;
+namespace Partez\Api\Controllers;
 
 use \Partez\Api\Abstract;
-use \Partez\Api\Model\AuthModel;
+use \Partez\Api\Models\AuthModel;
 use \Abollinger\Session;
 
 final class AuthController extends Abstract\Controller 

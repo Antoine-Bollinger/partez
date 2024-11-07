@@ -1,5 +1,5 @@
 <?php 
-namespace Partez\Api\Model;
+namespace Partez\Api\Models;
 
 use \Partez\Api\Abstract;
 
