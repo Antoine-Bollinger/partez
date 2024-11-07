@@ -18,7 +18,8 @@
             "view/**/*.twig",
             "public/**/*.css",
             "public/**/*.js",
-            "public/**/*.svg"
+            "public/**/*.svg",
+            "**/*.md"
         ]
     },
     "server": {

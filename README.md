@@ -11,7 +11,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 [![License](https://img.shields.io/packagist/l/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 
-Partez is a PHP starter kit designed to help developers quickly set up and manage a PHP web application. It includes robust backend support with streamlined front-end automation via `bricolo`, a JS package that compiles assets, serves your app, and provides live reloading for a smooth development workflow.
+`partez` is a PHP starter kit designed to help developers quickly set up and manage a PHP web application. It includes robust backend support with streamlined front-end automation via `bricolo`, a JS package that compiles assets, serves your app, and provides live reloading for a smooth development workflow.
 
 ![Home](/public/images/preview.jpg)
 
@@ -58,7 +58,7 @@ Partez is a PHP starter kit designed to help developers quickly set up and manag
 
 1. **Project Setup**: Create a new folder for your project and open a terminal in it.
 
-2. **Install the PHP Framework**: Run this command to install Partez and its dependencies:
+2. **Install the PHP Framework**: Run this command to install `partez` and its dependencies:
 
 ```bash
 composer create-project abollinger/partez .
@@ -66,7 +66,7 @@ composer create-project abollinger/partez .
 
 3. **Create a `.env` File**: If not automatically created, create a `.env` file at the project root. You can use .env.example as a reference.
 
-4. **Automatic Front-End Setup with `bricolo`**: `bricolo` is automatically installed via npm as part of the post-create command in `composer.json`. This includes asset compilation and live reloading.
+4. **Automatic Front-End Setup with `bricolo`**: `bricolo` is automatically installed via npm as part of the post-create command in `composer.json`. This includes asset compilation and live reloading. If you run the create-project command with `--no-script` options, you should run `npm install` to make sure that `bricolo` will be available.
 
 5. Run the Development Server: Start the server with the command below to view the app in your browser at <a href="http://localhost:1234">localhost:1234</a> (the port may change according to the other ports already in use on your machine. Please check the log in the console):
 
