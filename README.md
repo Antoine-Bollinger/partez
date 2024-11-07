@@ -212,6 +212,9 @@ The basic structure is:
 │   ├── Router/ (main router logic for the api)
 │   ├── View/ (set up a standardized response for every API request)
 │   └── Starter.php
+├── assets/
+│   ├── css/ (Contains scss files that will be compiled into css in the public/css folder, based on bricolo js automation)
+│   └── js/ (Contains typescript scripts that will be compiled into js in the public/js folder, based on bricolo js automation)
 ├── public/
 │   ├── css/
 │   ├── images/
@@ -221,10 +224,10 @@ The basic structure is:
 │   ├── Abstract/ (Basic logic of the app)
 │   ├── App/ (Starter of the app)
 │   ├── Config/ (Some configuration files like Bootstrap or Session)
-│   ├── Controller/
+│   ├── Controllers/
 │   │   └── [Controllers, typo is <Name>Controller.php]
 │   └── Router/ (Contains main Router logic)
-├── view/ (Contain Twig templates for your app)
+├── views/ (Contain Twig templates for your app)
 └── .env
 ```
 
@@ -235,9 +238,9 @@ The basic structure is:
 We welcome contributions! Here’s how to contribute:
 
 - **Fork** the project.
-- **Create your feature branch**: ```git checkout -b features/Myfeature```.
-- **Commit your changes**: ```git commit -m "✨ Introducing Myfeature!"```.
-- **Push to Github**: ```git push origin features/Myfeature```.
+- **Create your feature branch**: `git checkout -b features/Myfeature`.
+- **Commit your changes**: `git commit -m "✨ Introducing Myfeature!"`.
+- **Push to Github**: `git push origin features/Myfeature`.
 - **Open a Pull Request**.
 
 <!-- CONTACT -->
