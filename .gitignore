@@ -13,6 +13,8 @@ package-lock.json
 # deploy
 deploy*.php
 redirect.php
+sitemap.xml
+robots.txt
 
 # VSCode 
 .vscode

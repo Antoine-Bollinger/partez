@@ -1,4 +1,6 @@
 RewriteEngine On
+
+# Redirect requests from /public to root without breaking access
 RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
 RewriteRule ^ %1 [L,NE,R=302]
 
@@ -6,4 +8,8 @@ RewriteRule ^ %1 [L,NE,R=302]
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
 
+# Allow direct access to robots.txt and sitemap.xml
+RewriteRule ^(robots\.txt|sitemap\.xml)$ - [L,NC]
+
+# Route all other requests through public/index.php
 RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
