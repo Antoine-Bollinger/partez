@@ -15,7 +15,7 @@
         "directories": [
             "src/**/*.php",
             "src/**/*.yaml",
-            "view/**/*.twig",
+            "views/**/*.twig",
             "public/**/*.css",
             "public/**/*.js",
             "public/**/*.svg",
