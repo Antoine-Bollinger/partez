@@ -1,5 +1,5 @@
 <p align="center">
-    <p align="center"><img src="/public/partez.png" height="40"/></p>
+    <p align="center"><img src="/public/partez.png" height="40" alt="Logo partez"/></p>
     <br/>
     <p align="center">A simple & fast PHP starter kit for web app.</p>
     <p align="center">
@@ -13,11 +13,9 @@
 
 `partez` is a PHP starter kit designed to help developers quickly set up and manage a PHP web application. It includes robust backend support with streamlined front-end automation via `bricolo`, a JS package that compiles assets, serves your app, and provides live reloading for a smooth development workflow.
 
-![Home](/public/images/preview.jpg)
+![Home](/public/images/preview.webp)
 
-<details open="open">
-  <summary><b>Table of Contents</b></summary>
-  <ol>
+<ol>
     <li><a href="#getting-started">Getting Started</a>
         <ul>
             <li><a href="#requirements">Requirements</a></li>
@@ -33,7 +31,7 @@
             <li><a href="#the-api">The API</a></li>
         </ul>
     </li>
-    <li><a href="#bricolo-js-automation">Bricolo JS Automation</a></li>
+    <li><a href="#bricolo-js-automation">Bricolo JS Automation</a>
         <ul>
             <li><a href="#bricolo-js-configuration">Configuration</a></li>
             <li><a href="#usage">Usage</a></li>
@@ -42,8 +40,7 @@
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
+</ol>
 
 <!-- GETTING STARTED -->
 
