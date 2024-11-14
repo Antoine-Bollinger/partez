@@ -42,7 +42,6 @@
     <li><a href="#contact">Contact</a></li>
 </ol>
 
-<!-- GETTING STARTED -->
 
 ## Getting started
 
@@ -71,15 +70,16 @@ composer create-project abollinger/partez .
 composer serve
 ``` 
 
-<!-- HOW IT WORKS -->
 
 ## How it works
+
 
 ### Configuration
 
 1. **HTML Customization**: Modify the HTML layout in `src/views/Layout.twig` to adjust the document head.
 
 2. **Routing**: Routes are automatically derived from controllers in `src/Controllers` using specific annotations (see below).
+
 
 ### The Router
 
@@ -95,25 +95,28 @@ Define routes in src/Controllers files using PHP annotations:
 - Name (`name="Home"`) specifies the route's name.
 - Authentification (`auth=false`) restricts the access if set to `true`  (default is `false`).
 
+
 ### The Pages
 
 Controllers in `src/Controllers` extend the main controller (`Abstract/Controller.php`). The `init()` method call `renderPage("Page.twig")` to render the Twig template. Each page extends the main layout in `src/views/Layout.twig`.
+
 
 ### The Public Folder 
 
 The public directory houses `index.php`, as well as `js`, `css` and `images` folders, which can be customized freely.
 
+
 ### The API
 
 A basic API is available in `api/` and runs on a MySQL database.
 
-<!-- BRICOLO JS AUTOMATION -->
 
 ## Bricolo JS Automation
 
 The Partez PHP framework includes `bricolo` as an automation tool for front-end tasks, so you can focus on development without needing to handle asset compilation or live reloading setup yourself. `bricolo` is installed automatically during setup, and it's already configured with a bricoloconfig.json file that defines custom settings to integrate with this project.
 
 You can find more information on the [npm](https://www.npmjs.com/package/bricolo) of the `bricolo` (js) package.
+
 
 ### Bricolo JS Configuration
 
@@ -149,6 +152,7 @@ You can find more information on the [npm](https://www.npmjs.com/package/bricolo
 }
 ```
 
+
 **Configuration Overview**
 
 - **PHP Server**: The PHP server will run on port 8080 using the command `composer serve p={port}`.
@@ -165,6 +169,7 @@ You can find more information on the [npm](https://www.npmjs.com/package/bricolo
 
 
 - **Live Reload Server**: The development server is set to run on port 1234 for hot reloading.
+
 
 ### Usage
 
@@ -186,7 +191,6 @@ This command will:
 2. Compile and watch for changes in JavaScript and Sass files.
 3. Automatically reload the browser at <a href="http://localhost:1234">localhost:1234</a> whenever changes are detected in watched files.
 
-<!-- BUILD WITH -->
 
 ## Build with
 
@@ -228,7 +232,6 @@ The basic structure is:
 └── .env
 ```
 
-<!--CONTRIBUTING -->
 
 ## Contributing
 
@@ -240,7 +243,6 @@ We welcome contributions! Here’s how to contribute:
 - **Push to Github**: `git push origin features/Myfeature`.
 - **Open a Pull Request**.
 
-<!-- CONTACT -->
 
 ## Contact
 

@@ -1,6 +1,6 @@
 error:
-  controller: There is no controller for this route. Please check the src/controller directory.
-  view: The required view doesn't exist. Please check in the src/view directory.
+  controller: There is no controller for this route. Please check the src/Controllers directory.
+  view: The required view doesn't exist. Please check in the views/pages directory.
   page: Oups! We were not able to find this page.
   file: The file you're trying to read doesn't exists. Please check again.
   auth: You must be logged in to access this page.

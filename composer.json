@@ -24,7 +24,7 @@
         "twig/intl-extra": "^3.8",
         "vlucas/phpdotenv": "^5.6",
         "abollinger/helpers": "^1.2",
-        "abollinger/bricolo": "^1.3",
+        "abollinger/bricolo": "^1.5",
         "abollinger/session": "^1.1",
         "abollinger/router": "^1.0"
     },
@@ -47,7 +47,8 @@
             "@php bricolo migrate"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php vendor/bin/bricolo createLauncher"
         ],
         "post-create-project-cmd": [
             "npm install",
@@ -57,5 +58,5 @@
     "config": {
         "process-timeout": 0
     },
-    "version": "v2.7.4"
+    "version": "v2.7.5"
 }
