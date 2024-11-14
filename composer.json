@@ -51,12 +51,12 @@
         ],
         "post-create-project-cmd": [
             "@php vendor/bin/bricolo createLauncher",
-            "npm install",
+            "@php bricolo npmInstall",
             "@php bricolo log m=afterinstall"
         ]
     },
     "config": {
         "process-timeout": 0
     },
-    "version": "v2.7.6"
+    "version": "v2.7.7"
 }
