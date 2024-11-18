@@ -6,6 +6,9 @@ use \Partez\Api\Models\UsersModel;
 
 final class UsersController extends Abstract\Controller
 {
+    /** @var UsersModel $model Model use in this controller. */
+    private UsersModel $model;
+
     /**
      * Constructor initializes the UsersController.
      * It sets up the UsersModel as the data source for the controller.

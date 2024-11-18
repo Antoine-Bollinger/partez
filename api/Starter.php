@@ -13,15 +13,11 @@ use \Partez\Api\Router\Router;
  */
 final class Starter 
 {
-    /**
-     * @var Router $router An instance of the Router class for managing API routes and requests.
-     */
-    private $router;
+    /** @var Router $router An instance of the Router class for managing API routes and requests. */
+    private Router $router;
 
-    /**
-     * @var mixed $response Holds the API response obtained from the router.
-     */
-    private $response;
+    /** @var mixed $response Holds the API response obtained from the router. */
+    private mixed $response;
 
     /**
      * Constructor for the Starter class.
@@ -45,7 +41,7 @@ final class Starter
      */
     public function get(
 
-    ) {
+    ) :mixed {
         return $this->response;
     }
 }

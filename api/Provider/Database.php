@@ -10,9 +10,7 @@ use \Partez\Api\View\Response;
  * It interacts with the database using PDO and provides query execution functionality.
  */
 final class Database {
-    /**
-     * @var Response $view An instance of Response for managing API responses.
-     */
+    /** @var Response $view An instance of Response for managing API responses. */
     private Response $view;
 
     /**

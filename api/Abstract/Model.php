@@ -11,10 +11,8 @@ use \Partez\Api\Provider\Database;
  */
 abstract class Model 
 {
-    /**
-     * @var Database $db Instance of the Database class for database interactions.
-     */
-    protected $db;
+    /** @var Database $db Instance of the Database class for database interactions. */
+    protected Database $db;
 
     /**
      * Constructor for the Model class.

@@ -11,15 +11,11 @@ use \Abollinger\Helpers;
  */
 final class Response 
 {
-    /**
-     * @var array $response An array storing the API response parameters.
-     */
-    public $response;
+    /** @var array $response An array storing the API response parameters. */
+    public array $response;
 
-    /**
-     * @var array $default The default API response parameters.
-     */
-    private $default;
+    /** @var array $default The default API response parameters. */
+    private array $default;
 
     /**
      * Constructor for the Response class.

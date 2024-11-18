@@ -16,13 +16,13 @@ use \Abollinger\RouteReader;
 final class Router extends \Abollinger\Router
 {
     /** @var array $params Parameters for the API router. */
-    private $params;
+    private array $params;
     
     /** @var Session $session Session object for handling user sessions. */
-    private $session;
+    private Session $session;
     
     /** @var Response $view Response object for managing API responses. */
-    private $view;
+    private Response $view;
 
     /**
      * Constructor for the Router class.

@@ -7,8 +7,11 @@ use \Abollinger\Session;
 
 final class AuthController extends Abstract\Controller 
 {
-    private $model;
-    private $session;
+    /** @var AuthModel $model Model use in this controller. */
+    private AuthModel $model;
+
+    /** @var Session $session Session object for handling user sessions. */
+    private Session $session;
 
     /** 
      * The Auth controller handle the logic to login and logout in the API. When successfully logged in, the client receive an Bearer token that must be present in all requests header to get a response.

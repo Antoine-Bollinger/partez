@@ -12,25 +12,17 @@ use \Partez\Api\View\Response;
  */
 abstract class Controller 
 {
-    /**
-     * @var array $get An array containing sanitized GET request parameters.
-     */
-    protected $get;
+    /** @var array $get An array containing sanitized GET request parameters. */
+    protected array $get;
 
-    /**
-     * @var array $post An array containing sanitized POST request parameters.
-     */
-    protected $post;
+    /** @var array $post An array containing sanitized POST request parameters. */
+    protected array $post;
 
-    /**
-     * @var array $put An array containing sanitized PUT request parameters.
-     */
-    protected $put;
+    /** @var array $put An array containing sanitized PUT request parameters. */
+    protected array $put;
 
-    /**
-     * @var Response $view Instance of Response to manage API responses.
-     */
-    protected $view;
+    /** @var Response $view Instance of Response to manage API responses. */
+    protected Response $view;
 
     /**
      * Constructor for the Controller class.
