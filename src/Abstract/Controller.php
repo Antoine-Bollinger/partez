@@ -8,6 +8,7 @@ use \Twig\Environment;
 use \Twig\Extra\Html\HtmlExtension;
 use \Twig\Extra\Intl\IntlExtension;
 use \Twig\Extension\DebugExtension;
+use \Partez\Abstract\Twig\AppExtension;
 
 /**
  * Abstract class Controller.
@@ -65,6 +66,7 @@ abstract class Controller implements Initializer\Controller
         $this->twig->addExtension(new HtmlExtension());
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addExtension(new IntlExtension());
+        $this->twig->addExtension(new AppExtension());
         $this->twig->addGlobal("app_title", APP_TITLE);
         $this->twig->addGlobal("app_subdir", APP_SUBDIR);
         $this->twig->addGlobal("_params", $this->params);

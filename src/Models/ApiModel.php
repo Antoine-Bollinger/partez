@@ -11,14 +11,19 @@ use \Partez\Api\Starter as Api;
 final class ApiModel
 {
     /**
-     * Fetch data from the API.
+     * Fetch data from the API with GET method
      *
      * @param string $url The URL to query.
+     * @param array $get get data
+     * 
      * @return array The response data.
      */
     public static function get(
-        $url = ""
-    ) {
+        $url = "",
+        $get = []
+    ) :array {
+        $tmp = $_GET;
+        $_GET = array_merge($_GET, $get);
         try {
             $api = new Api([
                 "url" => "/api$url",
@@ -35,9 +40,19 @@ final class ApiModel
                 "message" => $e->getMessage()
             ];
         }
+        unset($_GET);
+        $_GET = $tmp;
         return $data;
     }
 
+    /**
+     * Fetch data from the API with POST method
+     *
+     * @param string $url The URL to query.
+     * @param array $post post data
+     * 
+     * @return array The response data.
+     */
     public static function post(
         $url = "",
         $post = []
