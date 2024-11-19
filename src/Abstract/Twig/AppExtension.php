@@ -1,4 +1,13 @@
-<?php
+<?php 
+/*
+ * This file is part of the Partez package.
+ *
+ * (c) Antoine Bollinger <abollinger@partez.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Partez\Abstract\Twig;
 
 use \Abollinger\Helpers;
@@ -28,8 +37,9 @@ class AppExtension extends AbstractExtension
      * 
      * @return array List of TwigFilter instances.
      */
-    public function getFilters() 
-    {
+    public function getFilters(
+
+    ) :array {
         return [
             new TwigFilter('list', [$this, 'formatList'])
         ];
@@ -43,7 +53,7 @@ class AppExtension extends AbstractExtension
      */
     public function formatList(
         array $arr = []
-    ) {
+    ) :string {
         return Helpers::printArray($arr);
     }
 }

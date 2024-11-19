@@ -1,4 +1,13 @@
 <?php 
+/*
+ * This file is part of the Partez package.
+ *
+ * (c) Antoine Bollinger <abollinger@partez.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Partez\Abstract;
 
 use \Abollinger\Helpers;
@@ -20,13 +29,13 @@ use \Partez\Abstract\Twig\AppExtension;
 abstract class Controller implements Initializer\Controller
 {
     /** @var Environment $twig */
-    private $twig;
+    private Environment $twig;
 
     /** @var array Error messages */
-    protected $errorMessages = [];
+    protected array $errorMessages = [];
     
     /** @var array Available error pages */
-    protected $availableErrorPages = [];
+    protected array $availableErrorPages = [];
 
     /**
      * Constructor for the class.
@@ -53,10 +62,11 @@ abstract class Controller implements Initializer\Controller
      * and defining global variables available within Twig templates.
      *
      * @param bool|string $cache Indicates whether Twig should use caching for templates (default: false)
+     * 
      * @return bool Returns true on successful setup of Twig environment, otherwise false
      */
     private function setTwig(
-        $cache = false
+        bool $cache = false
     ) :bool {
         $loader = new FilesystemLoader(APP_VIEWS);
         $this->twig = new Environment($loader, [
@@ -79,12 +89,14 @@ abstract class Controller implements Initializer\Controller
      * 
      * @param string $file  Name of the twig file to be rendered
      * @param array $params An array of variables passes to the twig template
+     * 
      * @return bool
+     * 
      * @throws \Exception
      */
     public function renderPage(
-        $file = "",
-        $params = []
+        string $file = "",
+        array $params = []
     ) :bool {
         try {
             if (!file_exists(APP_VIEWS . "/pages/" . $file)) {
@@ -104,12 +116,14 @@ abstract class Controller implements Initializer\Controller
     /**
      * Public function to render a Markdown written file. Based on erusev/parsedown package that is extended in shared/Parsedown.php file.
      * 
-     * @param string $file  Name of the Markdown file to be read
+     * @param string $file  Name of the Markdown file to be read.
+     * 
      * @return string|bool  Return a HTML string of the file or false if an error occured.
+     * 
      * @throws \Exception
      */
     public function renderMd(
-		$file = ""
+		string $file = ""
 	) :string|bool {
         try {
             if (!file_exists($file)) {
@@ -128,11 +142,13 @@ abstract class Controller implements Initializer\Controller
      * Public function to render a Yaml written file as a HTML list. Based on Helpers::getYaml & Helpers::printArray functions.
      * 
      * @param string $file      Name of the Markdown file to be read
+     * 
      * @return string|bool   Return a HTML string of the file or false if an error occured.
+     * 
      * @throws \Exception
      */
     public function renderYaml(
-        $file = ""
+        string $file = ""
     ) :string|bool {
         try {
             if (!file_exists($file)) {
@@ -146,15 +162,18 @@ abstract class Controller implements Initializer\Controller
     }
 
     /**
-     * Public function to render a directoryu Scan as an HTML list. Based on Helpers::getYaml & Helpers::printArray functions.
+     * Public function to render a directory Scan as an HTML list. Based on Helpers::getYaml & Helpers::printArray functions.
      * 
      * @param string $file      Name of the Markdown file to be read
+     * @param string $root      Root
+     * 
      * @return string|bool   Return a HTML string of the file or false if an error occured.
+     * 
      * @throws \Exception
      */
     public function renderScan(
-        $file = "",
-        $root = ""
+        string $file = "",
+        string $root = ""
     ) :string|bool {
         try {
             if (!file_exists($file)) {
