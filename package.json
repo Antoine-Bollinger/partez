@@ -8,6 +8,6 @@
     "author": "Antoine Bollinger",
     "license": "ISC",
     "dependencies": {
-        "bricolo": "^1.5.1"
+        "bricolo": "^1.6"
     }
 }
