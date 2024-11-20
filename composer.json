@@ -12,8 +12,8 @@
     "authors": [
         {
             "name": "Antoine Bollinger",
-            "email": "antoine.bollinger@gmail.com",
-            "homepage": "https://antoinebollinger.fr",
+            "email": "abollinger@partez.net",
+            "homepage": "https://partez.net",
             "role": "Developer"
         }
     ],
@@ -23,10 +23,10 @@
         "twig/html-extra": "^3.8",
         "twig/intl-extra": "^3.8",
         "vlucas/phpdotenv": "^5.6",
-        "abollinger/helpers": "^1.2",
         "abollinger/bricolo": "^1.6",
-        "abollinger/session": "^1.1",
-        "abollinger/router": "^1.0"
+        "abollinger/helpers": "^1.2",
+        "abollinger/router": "^1.1",
+        "abollinger/session": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -51,12 +51,11 @@
         ],
         "post-create-project-cmd": [
             "@php vendor/bin/bricolo createLauncher",
-            "@php bricolo npmInstall",
             "@php bricolo log m=afterinstall"
         ]
     },
     "config": {
         "process-timeout": 0
     },
-    "version": "v2.8.4"
+    "version": "v2.8.5"
 }
