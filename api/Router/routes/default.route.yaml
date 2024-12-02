@@ -1,0 +1,4 @@
+- path: /api/
+  verb: get
+  auth: false
+  controller: 'Partez\Api\Controllers\DefaultController::getDefault'
