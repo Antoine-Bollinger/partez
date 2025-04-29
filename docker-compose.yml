@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    container_name: pz_php
+    volumes:
+      - .:/var/www/html/
+      - vendor_data:/var/www/html/vendor # Anonymous volume for vendor directory
+    ports:
+      - "${APP_PORT}:80"
+    depends_on:
+      - db
+    command: >
+      sh -c "echo 'App is running on http://localhost:${APP_PORT}';   
+        chown -R www-data:www-data /var/www/html/vendor &&
+        apache2-foreground"
+
+  db:
+    image: mysql:8.0
+    container_name: pz_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${D_NAME}
+      MYSQL_USER: ${D_USER}
+      MYSQL_PASSWORD: ${D_PWD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+  vendor_data: # Named volume for vendor

@@ -1,0 +1,61 @@
+{
+    "name": "abollinger/partez",
+    "type": "project",
+    "description": "A simple & fast PHP starter kit for web app",
+    "keywords": [
+        "framework",
+        "fast",
+        "php"
+    ],
+    "homepage": "https://github.com/Antoine-Bollinger/partez",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Antoine Bollinger",
+            "email": "abollinger@partez.net",
+            "homepage": "https://partez.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "twig/twig": "^3.8",
+        "twig/html-extra": "^3.8",
+        "twig/intl-extra": "^3.8",
+        "vlucas/phpdotenv": "^5.6",
+        "abollinger/bricolo": "^1.6",
+        "abollinger/helpers": "^1.2",
+        "abollinger/router": "^1.1",
+        "abollinger/session": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Partez\\": "src/",
+            "Partez\\Api\\": "api/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Partez\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "serve": [
+            "@php bricolo serve d=public"
+        ],
+        "migrate": [
+            "@php bricolo migrate"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php vendor/bin/bricolo createLauncher",
+            "@php bricolo log m=afterinstall"
+        ]
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "version": "v2.8.6"
+}

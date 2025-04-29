@@ -1,0 +1,8 @@
+- path: /api/user
+  verb: get
+  auth: true
+  controller: 'Partez\Api\Controllers\UsersController::getUser'
+- path: /api/users
+  verb: get
+  auth: true
+  controller: 'Partez\Api\Controllers\UsersController::getUsers'

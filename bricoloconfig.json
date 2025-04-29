@@ -1,0 +1,28 @@
+{
+    "phpServer": {
+        "port": 8080,
+        "command": "composer serve p={port}"
+    },
+    "jsBuild": {
+        "entry": "assets/js/main.ts",
+        "output": "public/js/bundle.js"
+    },
+    "sassBuild": {
+        "entry": "assets/css/main.scss",
+        "output": "public/css/style.min.css"
+    },
+    "watch": {
+        "directories": [
+            "src/**/*.php",
+            "src/**/*.yaml",
+            "views/**/*.twig",
+            "public/**/*.css",
+            "public/**/*.js",
+            "public/**/*.svg",
+            "**/*.md"
+        ]
+    },
+    "server": {
+        "port": 1234
+    }
+}

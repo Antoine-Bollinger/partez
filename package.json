@@ -1,0 +1,15 @@
+{
+    "name": "partez",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "bricolo serve",
+        "watch": "esbuild assets/js/main.ts --outfile=public/js/bundle.js --watch --bundle --minify"
+    },
+    "author": "Antoine Bollinger",
+    "license": "ISC",
+    "dependencies": {
+        "bricolo": "^1.6.3",
+        "esbuild": "^0.25.3"
+    }
+}
