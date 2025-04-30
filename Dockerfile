@@ -18,12 +18,11 @@ RUN a2enmod rewrite
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy the Composer files and install dependencies
-COPY ./composer.json ./composer.lock ./
-RUN composer install
-
-# Copy the rest of the application code
+# Copy the entire application code
 COPY . /var/www/html
+
+# Install Composer dependencies
+RUN composer install
 
 # Run migrations or other setup tasks
 RUN php bricolo migrate
