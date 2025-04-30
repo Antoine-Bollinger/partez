@@ -13,7 +13,6 @@ deploy*.php
 redirect.php
 sitemap.xml
 robots.txt
-bricolo
 
 # VSCode 
 .vscode
