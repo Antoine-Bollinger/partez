@@ -51,7 +51,7 @@ abstract class Controller implements Initializer\Controller
         $this->setTwig();
         $this->setAvailableErrorPages();
         $this->setErrorMessages();
-        $this->init();
+        // $this->init();
     }
 
     /**

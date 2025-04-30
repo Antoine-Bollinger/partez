@@ -75,10 +75,12 @@ final class Router extends \Abollinger\Router
                 throw new \Exception("controller", 500);
             if ($this->route["auth"] && !$this->session->isLoggedAndAuthorized(true))
                 throw new \Exception("auth", 401);
-            new $this->route["controller"](array_merge($this->route, [
+            $controller = new $this->route["controller"](array_merge($this->route, [
                 "routes" => $this->routes,
                 "auth" => $this->session->isLoggedAndAuthorized(true)
             ]));
+            $method = $this->route["method"];
+            $controller->$method();
         } catch(\Exception $e) {
             new ErrorController([
                 "code" => $e->getCode(),
