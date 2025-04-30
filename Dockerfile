@@ -18,18 +18,8 @@ RUN a2enmod rewrite
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files and install dependencies
-COPY ./composer.json ./composer.lock ./
-RUN composer install
-
 # Copy the rest of the application source code (excluding vendor via .dockerignore)
 COPY . /var/www/html
-
-# Run migrations or other setup tasks
-RUN php bricolo migrate
-
-# Ensure appropriate permissions
-RUN chown -R www-data:www-data /var/www/html/vendor
 
 # Expose the port
 EXPOSE 80
