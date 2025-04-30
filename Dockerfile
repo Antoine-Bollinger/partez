@@ -25,6 +25,9 @@ RUN composer install
 # Copy the rest of the application source code (excluding vendor via .dockerignore)
 COPY . /var/www/html
 
+# Ensure .env exists
+RUN [ -f .env ] || cp .env.example .env
+
 # Run migrations or other setup tasks
 RUN php bricolo migrate
 
