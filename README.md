@@ -3,7 +3,7 @@
     <br/>
     <p align="center">A simple & fast PHP starter kit for web app.</p>
     <p align="center">
-        <a href="https://github.com/Antoine-Bollinger/partez/issues">🐛 Report Bug</a> | <a href="https://packagist.org/packages/abollinger/partez">See on Packagist 📦️</a>
+        <a href="https://github.com/Antoine-Bollinger/partez/issues">🐛 Report Bug</a>
     </p>
 </p>
 
@@ -11,7 +11,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 [![License](https://img.shields.io/packagist/l/abollinger/partez)](https://packagist.org/packages/abollinger/partez)
 
-`partez` is a PHP starter kit designed to help developers quickly set up and manage a PHP web application. It includes robust backend support with streamlined front-end automation via `bricolo`, a JS package that compiles assets, serves your app, and provides live reloading for a smooth development workflow.
+`partez` is a PHP starter kit designed to help developers quickly set up and manage a PHP web application.
 
 ![Home](/public/images/preview.webp)
 
@@ -19,7 +19,14 @@
     <li><a href="#getting-started">Getting Started</a>
         <ul>
             <li><a href="#requirements">Requirements</a></li>
-            <li><a href="#installation-and-setup">Installation and Setup</a></li>
+            <li><a href="#quick-start">Quick Start</a></li>
+        </ul>
+    </li>
+    <li><a href="#docker-details">Docker Details</a>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#volumes">Volumes</a></li>
+            <li><a href="#rebuilding-or-restarting">Rebuilding or Restarting</a></li>
         </ul>
     </li>
     <li><a href="#how-it-works">How It Works</a>
@@ -31,10 +38,10 @@
             <li><a href="#the-api">The API</a></li>
         </ul>
     </li>
-    <li><a href="#bricolo-js-automation">Bricolo JS Automation</a>
+    <li><a href="#javascript-development-with-esbuild">JavaScript Development with esbuild</a>
         <ul>
-            <li><a href="#bricolo-js-configuration">Configuration</a></li>
-            <li><a href="#usage">Usage</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#watch-compile">Watch & Compile</a></li>
         </ul>
     </li>
     <li><a href="#built-with">Built With</a></li>
@@ -47,28 +54,80 @@
 
 ### Requirements
 
-- [Composer](https://getcomposer.org/) for backend dependency management.
-- [Node.js](https://nodejs.org/) (v12 or higher) and npm for `bricolo` to enable asset compilation and live reloading.
+- [Docker](https://www.docker.com)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-### Installation and Setup
+### Quick Start
 
-1. **Project Setup**: Create a new folder for your project and open a terminal in it.
-
-2. **Install the PHP Framework**: Run this command to install `partez` and its dependencies:
+1. **Clone the Repository** (if you haven't already):
 
 ```bash
-composer create-project abollinger/partez .
+git clone https://github.com/Antoine-Bollinger/partez.git --branch master-docker --single-branch
+cd partez
+```
+2. **Set up Environnement Variables**: Copy the example `.env` file and adjust as need:
+
+```bash
+cp .env.example .env
+```
+Update these key variables in `.env` to configure your MySQL container and exposed port:
+
+```bash
+APP_PORT=8080
+D_NAME=partez_db
+D_USER=partez_user
+D_PWD=secretpassword
 ```
 
-3. **Create a `.env` File**: If not automatically created, create a `.env` file at the project root. You can use .env.example as a reference.
-
-4. **Automatic Front-End Setup with `bricolo`**: `bricolo` is automatically installed via npm as part of the post-create command in `composer.json`. This includes asset compilation and live reloading. If you run the create-project command with `--no-script` options, you should run `npm install` to make sure that `bricolo` will be available.
-
-5. Run the Development Server: Start the server with the command below to view the app in your browser at <a href="http://localhost:1234">localhost:1234</a> (the port may change according to the other ports already in use on your machine. Please check the log in the console):
+3. **Start the Project with Docker**:
 
 ```bash
-composer serve
-``` 
+docker-compose up -d --build
+```
+This will: 
+- Start a PHP 8.2 Apache container for the app
+- Start a MySQL 8.0 database container
+- Install Composer dependencies
+- Run `bricolo` migrations
+- Serve the app on <a href="http://localhost:1234">localhost:1234</a> 
+
+If the port is already in use, change APP_PORT in your .env file.
+
+
+## Docker Details
+
+Your app is now containerized and reproductible:
+
+
+### Services
+
+- **Web**: Run PHP 8.2 with Apache. Exposes port `${APP_PORT}` and runs `composer install`, `bricolo migrate`and Apache.
+- **DB**: MySQL 8.0, with database/user/password defined in your `.env`.
+
+
+### Volumes
+
+- `vendor_data`: Prevents local vendor folder from overwriting Docker-installed dependencies.
+- `db_data`: Persists your database state.
+
+
+## Rebuilding or Restarting
+
+To rebuild: 
+
+```bash
+docker-compose up --build
+```
+To stop:
+
+```bash
+docker-compose down
+```
+To stop and remove containers/volumes:
+
+```bash
+docker-compose down -v
+```
 
 
 ## How it works
@@ -111,126 +170,35 @@ The public directory houses `index.php`, as well as `js`, `css` and `images` fol
 A basic API is available in `api/` and runs on a MySQL database.
 
 
-## Bricolo JS Automation
+## JavaScript Development with esbuild
 
-The Partez PHP framework includes `bricolo` as an automation tool for front-end tasks, so you can focus on development without needing to handle asset compilation or live reloading setup yourself. `bricolo` is installed automatically during setup, and it's already configured with a bricoloconfig.json file that defines custom settings to integrate with this project.
-
-You can find more information on the [npm](https://www.npmjs.com/package/bricolo) of the `bricolo` (js) package.
+This project uses [`esbuild`](https://esbuild.github.io/) for TypeScript compilation and JavaScript bundling.
 
 
-### Bricolo JS Configuration
+### Setup
 
-`bricolo` is automatically installed within the project and configured with the file `bricoloconfig.json`:
-
-```json
-{
-    "phpServer": {
-        "port": 8080,
-        "command": "composer serve p={port}"
-    },
-    "jsBuild": {
-        "entry": "assets/js/main.ts",
-        "output": "public/js/bundle.js"
-    },
-    "sassBuild": {
-        "entry": "assets/css/main.scss",
-        "output": "public/css/style.min.css"
-    },
-    "watch": {
-        "directories": [
-            "src/**/*.php",
-            "src/**/*.yaml",
-            "view/**/*.twig",
-            "public/**/*.css",
-            "public/**/*.js",
-            "public/**/*.svg"
-        ]
-    },
-    "server": {
-        "port": 1234
-    }
-}
-```
-
-
-**Configuration Overview**
-
-- **PHP Server**: The PHP server will run on port 8080 using the command `composer serve p={port}`.
-
-- **Asset Compilation:**
-
-    - **JavaScript**: Compiles assets/js/main.ts into a bundle at public/js/bundle.js.
-    - **CSS**: Compiles assets/css/main.scss into a minified CSS file at public/css/style.min.css.
-
-
-- **File Watching**:
-
-    - `bricolo` monitors files in specified directories (`src/**/*.php`, `view/**/*.twig`, `public/**/*.css`, etc.) for changes, which will trigger asset compilation and live browser reload.
-
-
-- **Live Reload Server**: The development server is set to run on port 1234 for hot reloading.
-
-
-### Usage
-
-After creating the project, you can simply start the bricolo automation and server:
+Install dependencies (automatically done in Docker build):
 
 ```bash
-npm run serve
+npm install
 ```
 
-Or, if you prefer, use the command directly:
+
+### Watch & Compile
 
 ```bash
-npx bricolo serve
+npm run watch
 ```
 
-This command will:
-
-1. Start the PHP server on port 8080.
-2. Compile and watch for changes in JavaScript and Sass files.
-3. Automatically reload the browser at <a href="http://localhost:1234">localhost:1234</a> whenever changes are detected in watched files.
+This bundles and minifies `assets/js/main.ts` into `public/js/bundle.js` and watches for changes.
 
 
 ## Build with
 
-- This kit is build in **[PHP](https://www.php.net/)**, using as much as possible the **MVC pattern**. We use the **[Twig](https://twig.symfony.com/)** template engine to generate the pages. 
-- Style is now powered by **[Bootstrap v5.2](https://getbootstrap.com/)**, using the simple CDN link.
-- You can add JS scripts in the public folder or wherever you want, as mentioned earlier.
-
-The basic structure is: 
-
-```bash
-.
-├── api/
-│   ├── Abstract/ (Basic logic of the api)
-│   ├── Config/ (Configuration files)
-│   ├── Controllers/
-│   │   └── [Controllers, typo is <Name>Controller.php]
-│   ├── Models/
-│   │   └── [Models, typo is <Name>Model.php]
-│   ├── Provider/ (Providers logic like Database or any other resources provider)
-│   ├── Router/ (main router logic for the api)
-│   ├── View/ (set up a standardized response for every API request)
-│   └── Starter.php
-├── assets/
-│   ├── css/ (Contains scss files that will be compiled into css in the public/css folder, based on bricolo js automation)
-│   └── js/ (Contains typescript scripts that will be compiled into js in the public/js folder, based on bricolo js automation)
-├── public/
-│   ├── css/
-│   ├── images/
-│   ├── js/
-│   └── index.php
-├── src/
-│   ├── Abstract/ (Basic logic of the app)
-│   ├── App/ (Starter of the app)
-│   ├── Config/ (Some configuration files like Bootstrap or Session)
-│   ├── Controllers/
-│   │   └── [Controllers, typo is <Name>Controller.php]
-│   └── Router/ (Contains main Router logic)
-├── views/ (Contain Twig templates for your app)
-└── .env
-```
+- **PHP** (MVC pattern)
+- **Twig** for templating
+- **Bootstrap v5.2** (via CDN)
+- **MySQL 8.0**
 
 
 ## Contributing

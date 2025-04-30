@@ -7,8 +7,6 @@
 # vendors & node_modules
 node_modules
 vendor
-composer.lock
-package-lock.json
 
 # deploy
 deploy*.php
