@@ -23,3 +23,6 @@ bricolo
 # Old
 *_old.*
 *_old/
+
+# Testing
+*test.php
