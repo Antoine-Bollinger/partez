@@ -16,7 +16,7 @@ use \Partez\Models\ApiModel;
 final class UsersController extends Abstract\Controller 
 {
     /**
-     * @Route("/users", name="Users")
+     * @Route(path="/users", name="Users")
      */
     public function init(
 

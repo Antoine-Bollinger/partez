@@ -15,7 +15,7 @@ use \Partez\Abstract;
 final class LoginController extends Abstract\Controller 
 {
     /**
-     * @Route("/login", name="Login")
+     * @Route(path="/login", name="Login")
      */
     public function init(
 
