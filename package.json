@@ -3,11 +3,12 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "watch": "esbuild assets/js/main.ts --outfile=public/js/bundle.js --watch --bundle --minify"
+        "dev": "docker compose down -v && docker compose up -d --build && bricolo watch"
     },
     "author": "Antoine Bollinger",
     "license": "ISC",
     "dependencies": {
+        "bricolo": "^1.6.6",
         "esbuild": "^0.25.3"
     }
 }

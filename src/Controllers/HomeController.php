@@ -15,7 +15,7 @@ use \Partez\Abstract;
 final class HomeController extends Abstract\Controller 
 {
     /**
-     * @Route("/", name="Home")
+     * @Route(path="/", name="Home")
      */
     public function init(
 

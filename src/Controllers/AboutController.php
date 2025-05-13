@@ -15,7 +15,7 @@ use \Partez\Abstract;
 final class AboutController extends Abstract\Controller 
 {
     /**
-     * @Route("/about", name="About")
+     * @Route(path="/about", name="About")
      */
     public function init(
 

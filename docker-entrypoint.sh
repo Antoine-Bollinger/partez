@@ -7,6 +7,9 @@ while ! nc -z db 3306; do
 done
 echo "✅ MySQL is up!"
 
+# Set server qualified name
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Install php dependencies
 composer install
 
