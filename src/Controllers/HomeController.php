@@ -17,7 +17,7 @@ final class HomeController extends Abstract\Controller
     /**
      * @Route(path="/", name="Home")
      */
-    public function init(
+    public function home(
 
     ) :void {
         $this->renderPage("HomeView.twig");

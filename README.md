@@ -87,13 +87,14 @@ Define routes in src/Controllers files using PHP annotations:
 
 ```php
 /**
- * @Route("/", name="Home", auth=false)
+ * @Route(path="/", name="Home", auth=false)
  */
 ```
 
-- URI (`"/"`) is mandatory.
+- URI (`path="/"`) is mandatory.
 - Name (`name="Home"`) specifies the route's name.
-- Authentification (`auth=false`) restricts the access if set to `true`  (default is `false`).
+- Authentification (`auth=false`) restricts the access if set to `true`  (default is `false`, you can also use a $_ENV["APP_AUTH"] variable to set the default, for example in your `.env`, set `APP_AUTH=true` if needed.).
+- Administrator (`admin=true`) restricts acces to some admin parameters that you can set in your app.
 
 
 ### The Pages

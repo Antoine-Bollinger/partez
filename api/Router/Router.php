@@ -2,8 +2,8 @@
 namespace Partez\Api\Router;
 
 use \Partez\Abstract;
-use \Partez\Api\View\Response;
 
+use \Abollinger\Response;
 use \Abollinger\Session;
 use \Abollinger\Helpers;
 use \Abollinger\RouteReader;

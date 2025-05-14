@@ -13,7 +13,7 @@ final class DefaultController extends Abstract\Controller
     public function getDefault(
 
     ) :array {
-        $this->view->setCode(200);
-        return $this->view->get();
+        return $this->view
+            ->get();
     }
 }

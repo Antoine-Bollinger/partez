@@ -2,7 +2,7 @@
 namespace Partez\Api\Abstract;
 
 use \Abollinger\Helpers;
-use \Partez\Api\View\Response;
+use \Abollinger\Response;
 
 /**
  * Class Controller
@@ -20,6 +20,9 @@ abstract class Controller
 
     /** @var array $put An array containing sanitized PUT request parameters. */
     protected array $put;
+
+    /** @var array $files An array containing sanitized FILES request parameters. */
+    protected array $files;
 
     /** @var Response $view Instance of Response to manage API responses. */
     protected Response $view;

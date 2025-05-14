@@ -80,7 +80,7 @@ final class Router extends \Abollinger\Router
                 "auth" => $this->session->isLoggedAndAuthorized(true)
             ]));
             $method = $this->route["method"];
-            $controller->$method();
+            $controller->$method($this->route["params"]);
         } catch(\Exception $e) {
             $controller = new ErrorController([
                 "code" => $e->getCode(),

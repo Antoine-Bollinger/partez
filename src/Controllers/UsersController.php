@@ -18,7 +18,7 @@ final class UsersController extends Abstract\Controller
     /**
      * @Route(path="/users", name="Users")
      */
-    public function init(
+    public function users(
 
     ) :void {
         $data = ApiModel::get("/users");

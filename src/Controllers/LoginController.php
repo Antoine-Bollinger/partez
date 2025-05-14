@@ -17,7 +17,7 @@ final class LoginController extends Abstract\Controller
     /**
      * @Route(path="/login", name="Login")
      */
-    public function init(
+    public function login(
 
     ) :void {
         $this->renderPage("LoginView.twig");

@@ -1,4 +1,4 @@
-- path: /api/user
+- path: /api/users/{userId}
   verb: get
   auth: true
   controller: 'Partez\Api\Controllers\UsersController::getUser'

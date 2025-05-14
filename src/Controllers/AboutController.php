@@ -17,7 +17,7 @@ final class AboutController extends Abstract\Controller
     /**
      * @Route(path="/about", name="About")
      */
-    public function init(
+    public function about(
 
     ) :void {
         $this->renderPage("AboutView.twig", [

@@ -1,7 +1,7 @@
 <?php 
 namespace Partez\Api\Provider;
 
-use \Partez\Api\View\Response;
+use \Abollinger\Response;
 
 /**
  * Class Database
@@ -67,13 +67,14 @@ final class Database {
             $error = true;
             $message = $e->getMessage();
         }
-        return $this->view->set([
-            "error" => $error ?? false,
-            "message" => $message ?? "The request was successfully completed.",
-            "state" => $state ?? "",
-            "data" => $data ?? [],
-        ]);
-        // return $this->view->get();
+        return $this->view
+            ->set([
+                "error" => $error ?? false,
+                "message" => $message ?? "The request was successfully completed.",
+                "state" => $state ?? "",
+                "data" => $data ?? [],
+            ])
+            ->get();
     }
 
     /**
@@ -102,11 +103,13 @@ final class Database {
             $error = true;
             $message = $e->getMessage();
         }
-        return $this->view->set([
-            "error" => $error ?? false,
-            "message" => $message ?? "The request was successfully completed.",
-            "state" => $state ?? "",
-            "data" => $data ?? [],
-        ]);
+        return $this->view
+            ->set([
+                "error" => $error ?? false,
+                "message" => $message ?? "The request was successfully completed.",
+                "state" => $state ?? "",
+                "data" => $data ?? [],
+            ])
+            ->get();
     }
 }
