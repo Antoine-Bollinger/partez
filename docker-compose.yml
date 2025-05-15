@@ -22,6 +22,14 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 5321:80
+    environment:
+      - PMA_ARBITRARY=1
+
 volumes:
   db_data:
   vendor_data:
